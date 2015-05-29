@@ -1,0 +1,10 @@
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="atlas" >
+    <xacro:include filename="$(find atlas_plain)/models/atlas_plain/xacro/atlas_plain_with_sandia_hands_gazebo.xacro" />
+
+    <gazebo>
+        <!-- The following plugin pins the robot to the world. -->
+        <plugin filename="libPinPlugin.so" name="PinPlugin">
+            <pin_root_link>1</pin_root_link>
+        </plugin>
+    </gazebo>
+</robot>

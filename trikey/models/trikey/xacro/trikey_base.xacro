@@ -1,0 +1,148 @@
+<?xml version='1.0'?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro" name="trikey">
+
+    <property name="M_PI" value="3.1415926535897931" />
+    <property name="M_PI2" value="1.57079632679" />
+    <property name="TRK_MESH" value="meshes/low_res" />
+    <property name="TRK_COLL" value="meshes/low_res" />
+    <property name="OMNI_J" value="base_to_wheel"/>
+
+    <!--Continuous joint locations in base frame-->
+    <property name="ow_x" value="0.24"/>
+    <property name="ow_y" value="0.0"/>
+    <property name="ow_z" value="0.1"/>
+    <property name="cos_2pi_over_3" value="-0.5"/>
+    <property name="sin_2pi_over_3" value="0.86602540378"/>
+
+    <!--Translation of base frame-->
+    <property name="tb_z" value="0.23"/>
+
+
+    <!-- <xacro:include filename="$(find trikey)/transmissions/omni_wheels_to_base.transmissions.xacro"/>-->
+    <!--TRIKEY_BASE LINKS-->
+    <macro name="trikey_base" params="modelPath">
+        <link name="trikey_base">
+            <visual>
+              <origin xyz="0.0 0.0 ${tb_z}" rpy="${M_PI2} 0 ${M_PI2}"/>
+              <geometry name="trikey_base_geom">
+                    <mesh filename="${modelPath}/${TRK_MESH}/Trikey_assembly_Gwen_noWheels2_coarse.STL"/>
+              </geometry>
+              <material name="grey">
+                <color rgba="0.627 0.627 0.627 1"/>
+              </material>
+            </visual>
+            <inertial>
+                <mass value="32.7"/>
+                <origin xyz="-0.003048 0.00254 ${0.18415+tb_z}"/>
+                <inertia ixx="1.747" iyy="1.747" izz="1.192" ixy="0" ixz="0" iyz="0"/>
+            </inertial>
+            <collision name="base_collision_cyl">
+              <origin xyz="0.0 0.0 0.426" rpy="0 0 0"/>
+                <geometry>
+                    <cylinder length="0.65" radius="0.27"/>
+                </geometry>
+            </collision>
+        </link>
+
+    <!--    <joint name="coll_test_fixed_joint" type="fixed">-->
+    <!--        <origin xyz="0 0 0" rpy="0 0 0"/>-->
+    <!--        <parent link="trikey_base"/>-->
+    <!--        <child link="base_coll_test_0"/>-->
+    <!--    </joint>-->
+
+    <!--    <link name="base_coll_test_0">-->
+    <!--        <visual name="base_col_visual">     -->
+    <!--           <origin xyz="0.0 0.0 0.426" rpy="0 0 0"/>    -->
+    <!--            <geometry>-->
+    <!--                <cylinder length="0.65" radius="0.15"/>-->
+    <!--            </geometry> -->
+    <!--        </visual>    -->
+    <!--    </link>-->
+    </macro>
+
+    <macro name="omni_wheel_0" params="modelPath subwheelJointType">
+
+        <joint name="${OMNI_J}_j0" type="continuous">
+            <origin xyz="${ow_x} ${ow_y} ${ow_z}" rpy="0 0 0.0"/>
+            <parent link="trikey_base"/>
+            <child link="ow_transform_0_l"/>
+            <axis xyz="1 0 0"/>
+            <limit effort="100" velocity="${25.0*M_PI}"/>  <!-- This is an arbitrarily chosen large value. -->
+            <dynamics damping="1" friction="1"/>
+        </joint>
+
+        <link name="ow_transform_0_l">
+            <inertial>
+              <mass value="1e-3"/>
+              <origin rpy="0 0 0" xyz="0 0 0"/>
+              <inertia ixx="1e-6" ixy="1e-6" ixz="1e-6" iyy="0.0" iyz="0" izz="0.0"/>
+            </inertial>
+        </link>
+
+        <joint name="ow_transform_0_j" type="fixed">
+            <origin xyz="0 0 0" rpy="${M_PI2} 0 ${M_PI2}"/>
+            <parent link="ow_transform_0_l"/>
+            <child link="omni_wheel_0"/>
+            <axis xyz="0 0 1"/>
+        </joint>
+
+        <xacro:omni_wheel_18subs wheel_name="omni_wheel_0" wheel_radius="0.101" wheel_mass="0.66625" wheel_visual="${modelPath}/${TRK_MESH}/wheel_set_assembly2_coarse.STL" ixx="0.001603175" iyy="0.001603387" izz="0.002798144" ixy="0.000015199" ixz="0.000004598" iyz="0.000041656" subwheel_mass="0.01" subwheel_joint_type="${subwheelJointType}" color="Red"/>
+    </macro>
+
+    <macro name="omni_wheel_1" params="modelPath subwheelJointType">
+
+        <joint name="${OMNI_J}_j1" type="continuous">
+            <origin xyz="${cos_2pi_over_3 * ow_x} ${sin_2pi_over_3 * ow_x} ${ow_z}" rpy="0 0 2.0943951"/>
+            <parent link="trikey_base"/>
+            <child link="ow_transform_1_l"/>
+            <axis xyz="1 0 0"/>
+            <limit effort="100" velocity="${25.0*M_PI}"/>  <!-- This is an arbitrarily chosen large value. -->
+            <dynamics damping="1" friction="1"/>
+        </joint>
+
+        <link name="ow_transform_1_l">
+            <inertial>
+              <mass value="1e-3"/>
+              <origin rpy="0 0 0" xyz="0 0 0"/>
+              <inertia ixx="1e-6" ixy="1e-6" ixz="1e-6" iyy="0.0" iyz="0" izz="0.0"/>
+            </inertial>
+        </link>
+
+        <joint name="ow_transform_1_j" type="fixed">
+            <origin xyz="0 0 0" rpy="${M_PI2} 0 ${M_PI2}"/>
+            <parent link="ow_transform_1_l"/>
+            <child link="omni_wheel_1"/>
+            <axis xyz="0 0 1"/>
+        </joint>
+
+        <xacro:omni_wheel_18subs wheel_name="omni_wheel_1" wheel_radius="0.101" wheel_mass="0.66625" wheel_visual="${modelPath}/${TRK_MESH}/wheel_set_assembly2_coarse.STL" ixx="0.001603175" iyy="0.001603387" izz="0.002798144" ixy="0.000015199" ixz="0.000004598" iyz="0.000041656" subwheel_mass="0.01" subwheel_joint_type="${subwheelJointType}" color="Green"/>
+    </macro>
+
+    <macro name="omni_wheel_2" params="modelPath subwheelJointType">
+        <joint name="${OMNI_J}_j2" type="continuous">
+            <origin xyz="${cos_2pi_over_3 * ow_x} ${-sin_2pi_over_3 * ow_x} ${ow_z}" rpy="0 0 -2.0943951"/>
+            <parent link="trikey_base"/>
+            <child link="ow_transform_2_l"/>
+            <axis xyz="1 0 0"/>
+            <limit effort="100" velocity="${25.0*M_PI}"/>  <!-- This is an arbitrarily chosen large value. -->
+            <dynamics damping="1" friction="1"/>
+        </joint>
+
+        <link name="ow_transform_2_l">
+            <inertial>
+              <mass value="1e-3"/>
+              <origin rpy="0 0 0" xyz="0 0 0"/>
+              <inertia ixx="1e-6" ixy="1e-6" ixz="1e-6" iyy="0.0" iyz="0" izz="0.0"/>
+            </inertial>
+        </link>
+
+        <joint name="ow_transform_2_j" type="fixed">
+            <origin xyz="0 0 0" rpy="${M_PI2} 0 ${M_PI2}"/>
+            <parent link="ow_transform_2_l"/>
+            <child link="omni_wheel_2"/>
+            <axis xyz="0 0 1"/>
+        </joint>
+
+        <xacro:omni_wheel_18subs wheel_name="omni_wheel_2" wheel_radius="0.101" wheel_mass="0.66625" wheel_visual="${modelPath}/${TRK_MESH}/wheel_set_assembly2_coarse.STL" ixx="0.001603175" iyy="0.001603387" izz="0.002798144" ixy="0.000015199" ixz="0.000004598" iyz="0.000041656" subwheel_mass="0.01" subwheel_joint_type="${subwheelJointType}" color="Blue"/>
+   </macro>
+</robot>

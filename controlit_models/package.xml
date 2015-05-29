@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<package format="2">
+    <name>controlit_models</name>
+
+    <version>0.0.0</version>
+  
+    <description>
+        This meta-package includes robot models that can be used by ControlIt!.
+    </description>
+
+    <!-- One license tag required, multiple allowed, one license per tag -->
+    <license>LGPLv2.1</license>
+
+    <!-- Url tags are optional, but mutiple are allowed, one per tag -->
+    <url type="website">http://robotcontrolit.com</url>
+
+    <!-- One maintainer tag required, multiple allowed, one person per tag --> 
+    <maintainer email="liangfok@utexas.edu">Chien-Liang Fok</maintainer>
+
+    <author>Chien-Liang Fok</author>
+    <author>Gwendolyn Johnson</author>
+    <author>J.D. Yamokoski</author>
+
+    <!-- The *_depend tags are used to specify dependencies -->
+    <!-- Dependencies can be catkin packages or system dependencies -->
+    <!-- Examples: -->
+    <!-- Use build_depend for packages you need at compile time: -->
+    <!--   <build_depend>message_generation</build_depend> -->
+    <!-- Use buildtool_depend for build tool packages: -->
+    <!--   <buildtool_depend>catkin</buildtool_depend> -->
+    <!-- Use run_depend for packages you need at runtime: -->
+    <!--   <run_depend>message_runtime</run_depend> -->
+    <!-- Use test_depend for packages you need only for testing: -->
+    <!--   <test_depend>gtest</test_depend> -->
+    <buildtool_depend>catkin</buildtool_depend>
+
+    <exec_depend>atlas_legs_plain</exec_depend>
+    <exec_depend>atlas_plain</exec_depend>
+    <exec_depend>atlas_plain_pinned</exec_depend>
+    <exec_depend>dreamer</exec_depend>
+    <exec_depend>dreamer_hand</exec_depend>
+    <exec_depend>dreamer_testbed</exec_depend>
+    <exec_depend>hcrl_simulator</exec_depend>
+    <exec_depend>hume</exec_depend>
+    <exec_depend>omni_wheel</exec_depend>
+    <exec_depend>stickbot_bipedal_12dof</exec_depend>
+    <exec_depend>stickbot_humanoid_32dof</exec_depend>
+    <exec_depend>stickbot_humanoid_32dof_pinned</exec_depend>
+    <exec_depend>stickbot_leg_6dof</exec_depend>
+    <exec_depend>stickbot_lowerbody_3dof</exec_depend>
+    <exec_depend>stickbot_upperbody_10dof</exec_depend>
+    <exec_depend>trikey</exec_depend>
+    <exec_depend>trikey_pinned</exec_depend>
+    <exec_depend>valkyrie</exec_depend>
+    <exec_depend>valkyrie_upperbody</exec_depend>
+
+    <!-- The export tag contains other, unspecified, tags -->
+    <export>
+        <!-- Other tools can request additional information be placed here -->
+    </export>
+</package>

@@ -1,0 +1,387 @@
+<?xml version="1.0" ?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro" name="stickbot_upperbody_10dof">
+
+  <xacro:include filename="$(find hcrl_simulator)/models/generic_models.xml" />
+
+  <macro name="stickbot_upperbody_10dof">
+    <link name="base_plate">
+      <inertial>
+        <mass value="10"/>
+        <origin xyz="0.0 0.0 0.075"/>
+        <inertia ixx="0.07708" ixy="0" ixz="0" iyy="0.1354" iyz="0" izz="0.2083"/>
+      </inertial>
+      <visual>
+        <origin rpy="0 0 0 " xyz="0 0 0.075"/>
+        <geometry name="base_plate">
+          <box size="0.4 0.3 0.15"/>
+        </geometry>
+        <material name="grey">
+          <color rgba="0.627 0.627 0.627 1"/>
+        </material>
+      </visual>
+      <collision>
+        <origin rpy="0 0 0 " xyz="0.0 0.0 0.075"/>
+        <geometry name="base_plate">
+          <box size="0.4 0.3 0.15"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <joint name="waist_rotator" type="continuous">
+      <axis xyz="0 0 1"/>
+      <origin rpy="0 0 0" xyz="0.1 0.0 0.15"/>
+      <dynamics damping="0.1"/>
+      <parent link="base_plate"/>
+      <child link="waist_rotator_link"/>
+      <limit effort="100" lower="-3.14" upper="3.14" velocity="10"/>
+    </joint>
+
+    <link name="waist_rotator_link">
+      <inertial>
+        <mass value="1.5"/>
+        <origin xyz="0.0 0.0 0.125"/>
+        <inertia ixx="0.028125" ixy="0" ixz="0" iyy="0.045" iyz="0" izz="0.028125"/>
+      </inertial>
+      <visual>
+        <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.015"/>
+        <geometry name="torso">
+          <cylinder radius="0.1" length="0.03"/>
+        </geometry>
+        <material name="grey">
+          <color rgba="0.627 0.627 0.627 1"/>
+        </material>
+      </visual>
+      <collision>
+        <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.015"/>
+        <geometry name="torso">
+          <cylinder radius="0.1" length="0.03"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <joint name="torso_lower_pitch" type="continuous">
+      <axis xyz="0 1 0"/>
+      <origin rpy="0 0 0" xyz="0.0 0.0 0.03"/>
+      <dynamics damping="0.1"/>
+      <parent link="waist_rotator_link"/>
+      <child link="torso_lower_pitch_link"/>
+      <limit effort="100" lower="-3.14" upper="3.14" velocity="10"/>
+    </joint>
+
+    <link name="torso_lower_pitch_link">
+      <inertial>
+        <mass value="3"/>
+        <origin xyz="0.0 0.0 0.125"/>
+        <inertia ixx="0.028125" ixy="0" ixz="0" iyy="0.045" iyz="0" izz="0.028125"/>
+      </inertial>
+      <visual>
+        <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.125"/>
+        <geometry name="torso_lower_pitch_link">
+          <box size="0.12 0.25 0.25"/>
+        </geometry>
+        <material name="grey">
+          <color rgba="0.627 0.627 0.627 1"/>
+        </material>
+      </visual>
+      <collision>
+        <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.125"/>
+        <geometry name="torso_lower_pitch_link">
+          <box size="0.12 0.25 0.25"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <joint name="torso_upper_pitch" type="continuous">
+      <axis xyz="0 1 0"/>
+      <origin rpy="0 0 0" xyz="0.0 0.0 0.25"/>
+      <dynamics damping="0.1"/>
+      <parent link="torso_lower_pitch_link"/>
+      <child link="torso_upper_pitch_link"/>
+      <limit effort="100" lower="-3.14" upper="3.14" velocity="10"/>
+    </joint>
+
+    <link name="torso_upper_pitch_link">
+      <inertial>
+        <mass value="3"/>
+        <origin xyz="0.0 0.0 0.125"/>
+        <inertia ixx="0.028125" ixy="0" ixz="0" iyy="0.045" iyz="0" izz="0.028125"/>
+      </inertial>
+      <visual>
+        <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.125"/>
+        <geometry name="torso_upper_pitch_link">
+          <box size="0.12 0.25 0.25"/>
+        </geometry>
+        <material name="grey">
+          <color rgba="0.627 0.627 0.627 1"/>
+        </material>
+      </visual>
+      <collision>
+        <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.125"/>
+        <geometry name="torso_upper_pitch_link">
+          <box size="0.12 0.25 0.25"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <joint name="right_shoulder_extensor" type="continuous">
+      <axis xyz="0 1 0"/>
+      <origin rpy="0 0 0" xyz="0.0 -0.125 0.22"/>
+      <dynamics damping="0.1"/>
+      <parent link="torso_upper_pitch_link"/>
+      <child link="right_shoulder_extensor_link"/>
+      <limit effort="100" lower="-3.14" upper="3.14" velocity="10"/>
+    </joint>
+
+    <link name="right_shoulder_extensor_link">
+      <inertial>
+        <mass value="3"/>
+        <origin xyz="0.0 -0.01 0.0"/>
+        <inertia ixx="0.028125" ixy="0" ixz="0" iyy="0.045" iyz="0" izz="0.028125"/>
+      </inertial>
+      <visual>
+        <origin rpy="1.57 0.0 0.0" xyz="0.0 -0.01 0.0"/>
+        <geometry name="right_shoulder_extensor_link">
+          <cylinder radius="0.06" length="0.02"/>
+        </geometry>
+        <material name="grey">
+          <color rgba="0.627 0.627 0.627 1"/>
+        </material>
+      </visual>
+      <collision>
+        <origin rpy="1.57 0.0 0.0" xyz="0.0 -0.01 0.0"/>
+        <geometry name="right_shoulder_extensor_link">
+          <cylinder radius="0.06" length="0.02"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <joint name="right_shoulder_abductor" type="continuous">
+      <axis xyz="1 0 0"/>
+      <origin rpy="0 0 0" xyz="0.0 -0.04 0.0"/>
+      <dynamics damping="0.1"/>
+      <parent link="right_shoulder_extensor_link"/>
+      <child link="right_shoulder_abductor_link"/>
+      <limit effort="100" lower="-3.14" upper="3.14" velocity="10"/>
+    </joint>
+
+    <link name="right_shoulder_abductor_link">
+      <inertial>
+        <mass value="3"/>
+        <origin xyz="0.0 -0.02 0.0"/>
+        <inertia ixx="0.028125" ixy="0" ixz="0" iyy="0.045" iyz="0" izz="0.028125"/>
+      </inertial>
+      <visual>
+        <origin rpy="0.0 1.57 0.0" xyz="0.0 -0.02 0.0"/>
+        <geometry name="right_shoulder_abductor_link">
+          <cylinder radius="0.04" length="0.1"/>
+        </geometry>
+        <material name="grey">
+          <color rgba="0.627 0.627 0.627 1"/>
+        </material>
+      </visual>
+      <collision>
+        <origin rpy="0.0 1.57 0.0" xyz="0.0 -0.02 0.0"/>
+        <geometry name="right_shoulder_abductor_link">
+          <cylinder radius="0.04" length="0.1"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <joint name="right_shoulder_rotator" type="continuous">
+      <axis xyz="0 0 1"/>
+      <origin rpy="0 0 0" xyz="0.0 -0.02 -0.02"/>
+      <dynamics damping="0.1"/>
+      <parent link="right_shoulder_abductor_link"/>
+      <child link="right_shoulder_rotator_link"/>
+      <limit effort="100" lower="-3.14" upper="3.14" velocity="10"/>
+    </joint>
+
+    <link name="right_shoulder_rotator_link">
+      <inertial>
+        <mass value="3"/>
+        <origin xyz="0.0 0.0 -0.1"/>
+        <inertia ixx="0.028125" ixy="0" ixz="0" iyy="0.045" iyz="0" izz="0.028125"/>
+      </inertial>
+      <visual>
+        <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 -0.1"/>
+        <geometry name="right_shoulder_rotator_link">
+          <cylinder radius="0.03" length="0.2"/>
+        </geometry>
+        <material name="grey">
+          <color rgba="0.627 0.627 0.627 1"/>
+        </material>
+      </visual>
+      <collision>
+        <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 -0.1"/>
+        <geometry name="right_shoulder_rotator_link">
+          <cylinder radius="0.03" length="0.2"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <joint name="right_elbow_extensor" type="continuous">
+      <axis xyz="0 1 0"/>
+      <origin rpy="0 0 0" xyz="0.0 -0.0 -0.2"/>
+      <dynamics damping="0.1"/>
+      <parent link="right_shoulder_rotator_link"/>
+      <child link="right_elbow_extensor_link"/>
+      <limit effort="100" lower="-3.14" upper="3.14" velocity="10"/>
+    </joint>
+
+    <link name="right_elbow_extensor_link">
+      <inertial>
+        <mass value="3"/>
+        <origin xyz="0.0 0.0 -0.1"/>
+        <inertia ixx="0.028125" ixy="0" ixz="0" iyy="0.045" iyz="0" izz="0.028125"/>
+      </inertial>
+      <visual>
+        <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 -0.1"/>
+        <geometry name="right_elbow_extensor_link">
+          <cylinder radius="0.03" length="0.2"/>
+        </geometry>
+        <material name="grey">
+          <color rgba="0.627 0.627 0.627 1"/>
+        </material>
+      </visual>
+      <collision>
+        <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 -0.1"/>
+        <geometry name="right_elbow_extensor_link">
+          <cylinder radius="0.03" length="0.2"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <joint name="right_wrist_rotator" type="continuous">
+      <axis xyz="0 0 1"/>
+      <origin rpy="0 0 0" xyz="0.0 -0.0 -0.2"/>
+      <dynamics damping="0.1"/>
+      <parent link="right_elbow_extensor_link"/>
+      <child link="right_wrist_rotator_link"/>
+      <limit effort="100" lower="-3.14" upper="3.14" velocity="10"/>
+    </joint>
+
+    <link name="right_wrist_rotator_link">
+      <inertial>
+        <mass value="3"/>
+        <origin xyz="0.0 0.0 -0.02"/>
+        <inertia ixx="0.028125" ixy="0" ixz="0" iyy="0.045" iyz="0" izz="0.028125"/>
+      </inertial>
+      <visual>
+        <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 -0.02"/>
+        <geometry name="right_wrist_rotator_link">
+          <cylinder radius="0.03" length="0.04"/>
+        </geometry>
+        <material name="grey">
+          <color rgba="0.627 0.627 0.627 1"/>
+        </material>
+      </visual>
+      <collision>
+        <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 -0.02"/>
+        <geometry name="right_wrist_rotator_link">
+          <cylinder radius="0.03" length="0.04"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <joint name="right_wrist_extensor" type="continuous">
+      <axis xyz="1 0 0"/>
+      <origin rpy="0 0 0" xyz="0.0 -0.0 -0.02"/>
+      <dynamics damping="0.1"/>
+      <parent link="right_wrist_rotator_link"/>
+      <child link="right_wrist_extensor_link"/>
+      <limit effort="100" lower="-3.14" upper="3.14" velocity="10"/>
+    </joint>
+
+    <link name="right_wrist_extensor_link">
+      <inertial>
+        <mass value="3"/>
+        <origin xyz="0.0 0.0 -0.02"/>
+        <inertia ixx="0.028125" ixy="0" ixz="0" iyy="0.045" iyz="0" izz="0.028125"/>
+      </inertial>
+      <visual>
+        <origin rpy="1.57 0.0 0.0" xyz="0.0 0.0 -0.02"/>
+        <geometry name="right_wrist_extensor_link">
+          <cylinder radius="0.03" length="0.04"/>
+        </geometry>
+        <material name="grey">
+          <color rgba="0.627 0.627 0.627 1"/>
+        </material>
+      </visual>
+      <collision>
+        <origin rpy="1.57 0.0 0.0" xyz="0.0 0.0 -0.02"/>
+        <geometry name="right_wrist_extensor_link">
+          <cylinder radius="0.03" length="0.04"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <joint name="right_wrist_abductor" type="continuous">
+      <axis xyz="0 1 0"/>
+      <origin rpy="0 0 0" xyz="0.0 -0.0 -0.02"/>
+      <dynamics damping="0.1"/>
+      <parent link="right_wrist_extensor_link"/>
+      <child link="right_wrist_abductor_link"/>
+      <limit effort="100" lower="-3.14" upper="3.14" velocity="10"/>
+    </joint>
+
+    <link name="right_wrist_abductor_link">
+      <inertial>
+        <mass value="3"/>
+        <origin xyz="0.0 0.0 -0.06"/>
+        <inertia ixx="0.028125" ixy="0" ixz="0" iyy="0.045" iyz="0" izz="0.028125"/>
+      </inertial>
+      <visual>
+        <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 -0.06"/>
+        <geometry name="right_wrist_abductor_link">
+          <box size="0.1 0.02 0.12"/>
+        </geometry>
+        <material name="grey">
+          <color rgba="0.627 0.627 0.627 1"/>
+        </material>
+      </visual>
+      <collision>
+        <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 -0.06"/>
+        <geometry name="right_wrist_abductor_link">
+          <box size="0.1 0.02 0.12"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <gazebo reference="waist_rotator">
+      <provideFeedback value="true"/>
+    </gazebo>
+    <gazebo reference="torso_lower_pitch">
+      <provideFeedback value="true"/>
+    </gazebo>
+    <gazebo reference="torso_upper_pitch">
+      <provideFeedback value="true"/>
+    </gazebo>
+    <gazebo reference="right_shoulder_extensor">
+      <provideFeedback value="true"/>
+    </gazebo>
+    <gazebo reference="right_shoulder_abductor">
+      <provideFeedback value="true"/>
+    </gazebo>
+    <gazebo reference="right_shoulder_rotator">
+      <provideFeedback value="true"/>
+    </gazebo>
+    <gazebo reference="right_elbow_extensor">
+      <provideFeedback value="true"/>
+    </gazebo>
+    <gazebo reference="right_wrist_rotator">
+      <provideFeedback value="true"/>
+    </gazebo>
+    <gazebo reference="right_wrist_extensor">
+      <provideFeedback value="true"/>
+    </gazebo>
+    <gazebo reference="right_wrist_abductor">
+      <provideFeedback value="true"/>
+    </gazebo>
+
+    <gazebo version="1.2">
+      <plugin filename="libPinPlugin.so" name="PinPlugin">
+        <pin_root_link>1</pin_root_link>
+      </plugin>
+    </gazebo>
+  </macro>
+</robot>

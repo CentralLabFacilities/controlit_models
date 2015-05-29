@@ -1,0 +1,159 @@
+<?xml version='1.0'?>
+<!-- <xacro:include filename="$(find trikey)/transmissions/omni_wheels_to_base.transmissions.xacro"/>-->
+<!--TRIKEY_WHEEL LINKS-->
+<macro name="trikey_wheels">
+
+	<link name="omni_wheel_0">
+		<visual name="omni_wheel_0_visual">
+			<origin xyz="0 0 0" rpy="${M_PI2} 0 0"/>
+		  <geometry name="omni_wheel_0_geom">
+		    <mesh filename="$(find trikey)/models/${TRK_MESH}/wheel_set_assembly2_coarse.STL"/>
+		  </geometry>
+      <material name="grey">
+        <color rgba="0.627 0.627 0.627 1"/>
+      </material>
+		</visual>
+		<inertial>
+			<mass value="0.66625"/>
+			<origin xyz="-0.0001  .05808 -0.0002" rpy="0.0 0.0 0.0"/>
+			<inertia ixx="0.001603175" ixz="0.000004598" ixy="0.000015199" izz="0.001603387" iyz="0.000041656" iyy="0.002798144"/>
+		</inertial>
+		<collision name="omni_collision_cyl_0">
+		   <origin xyz="0 0.05 0" rpy="${M_PI2} 0 0"/>
+		   <geometry>
+		   		<!-- <cylinder length="0.025" radius="0.101"/> -->
+          <sphere radius="0.101"/>
+		   </geometry>
+       <surface>
+          <ode>
+            <mu>1</mu>
+            <mu2>1</mu2>
+            <fdir1>0 0 1</fdir1>
+          </ode>
+          <bullet>
+            <friction>1</friction>
+            <friction2>1</friction2>
+            <fdir1>0 0 1</fdir1>
+          </bullet>
+        </surface>
+		</collision>
+	</link>
+
+<!--	<joint name="omni_coll_test_fixed_joint0" type="fixed">-->
+<!--		<origin xyz="0 0 0" rpy="0 0 0"/>-->
+<!--		<parent link="omni_wheel_0"/>-->
+<!--		<child link="omni_wheel_coll_test_0"/>-->
+<!--	</joint>-->
+
+<!--	<link name="omni_wheel_coll_test_0">-->
+<!--		<visual name="omni_wheel_0_visual">  	-->
+<!--		  <origin xyz="0 0.05 0" rpy="${M_PI2} 0 0"/>-->
+<!--		   <geometry>-->
+<!--		   		<cylinder length="0.025" radius="0.101"/>-->
+<!--		   </geometry>-->
+<!--		</visual>    -->
+<!--	</link>-->
+
+	<link name="omni_wheel_1">
+    <visual name="omni_wheel_0_visual">
+    	<origin xyz="0 0 0" rpy="${M_PI2} 0 0"/>
+      <geometry name="omni_wheel_0_geom">
+        <mesh filename="$(find trikey)/models/${TRK_MESH}/wheel_set_assembly2_coarse.STL"/>
+      </geometry>
+      <material name="grey">
+        <color rgba="0.627 0.627 0.627 1"/>
+      </material>
+    </visual>
+    <inertial>
+	  	<mass value="0.66625"/>
+    	<origin xyz="-0.0001  .05808 -0.0002" rpy="0.0 0.0 0.0"/>
+    	<inertia ixx="0.001603175" ixz="0.000004598" ixy="0.000015199" izz="0.001603387" iyz="0.000041656" iyy="0.002798144"/>
+    </inertial>
+    <collision name="omni_collision_cyl_1">
+       <origin xyz="0 0.05 0" rpy="${M_PI2} 0 0"/>
+       <geometry>
+       		<!-- <cylinder length="0.025" radius="0.101"/> -->
+          <sphere radius="0.101"/>
+       </geometry>
+       <surface>
+          <ode>
+            <mu>1</mu>
+            <mu2>1</mu2>
+            <fdir1>0 0 1</fdir1>
+          </ode>
+          <bullet>
+            <friction>1</friction>
+            <friction2>1</friction2>
+            <fdir1>0 0 1</fdir1>
+          </bullet>
+        </surface>
+    </collision>
+  </link>
+
+<!--<joint name="omni_coll_test_fixed_joint1" type="fixed">-->
+<!--	<origin xyz="0 0 0" rpy="0 0 0"/>-->
+<!--	<parent link="omni_wheel_1"/>-->
+<!--	<child link="omni_wheel_coll_test_1"/>-->
+<!--</joint>-->
+
+<!--<link name="omni_wheel_coll_test_1">-->
+<!--  <visual name="omni_wheel_1_visual">  	-->
+<!--    <origin xyz="0 0.05 0" rpy="${M_PI2} 0 0"/>-->
+<!--     <geometry>-->
+<!--     		<cylinder length="0.025" radius="0.101"/>-->
+<!--     </geometry>-->
+<!--  </visual>    -->
+<!--</link>-->
+
+  <link name="omni_wheel_2">
+    <visual name="omni_wheel_0_visual">
+    	<origin xyz="0 0 0" rpy="${M_PI2} 0 0"/>
+      <geometry name="omni_wheel_0_geom">
+        <mesh filename="$(find trikey)/models/${TRK_MESH}/wheel_set_assembly2_coarse.STL"/>
+      </geometry>
+      <material name="grey">
+        <color rgba="0.627 0.627 0.627 1"/>
+      </material>
+    </visual>
+    <inertial>
+  		<mass value="0.66625"/>
+    	<origin xyz="-0.0001  .05808 -0.0002" rpy="0.0 0.0 0.0"/>
+    	<inertia ixx="0.001603175" ixz="0.000004598" ixy="0.000015199" izz="0.001603387" iyz="0.000041656" iyy="0.002798144"/>
+    </inertial>
+    <collision name="omni_collision_cyl_1">
+       <origin xyz="0 0.05 0" rpy="${M_PI2} 0 0"/>
+       <geometry>
+       		<!-- <cylinder length="0.025" radius="0.101"/> -->
+          <sphere radius="0.101"/>
+       </geometry>
+       <surface>
+          <ode>
+            <mu>1</mu>
+            <mu2>1</mu2>
+            <fdir1>0 0 1</fdir1>
+          </ode>
+          <bullet>
+            <friction>1</friction>
+            <friction2>1</friction2>
+            <fdir1>0 0 1</fdir1>
+          </bullet>
+        </surface>
+    </collision>
+  </link>
+
+<!--<joint name="omni_coll_test_fixed_joint2" type="fixed">-->
+<!--	<origin xyz="0 0 0" rpy="0 0 0"/>-->
+<!--	<parent link="omni_wheel_2"/>-->
+<!--	<child link="omni_wheel_coll_test_2"/>-->
+<!--</joint>-->
+
+<!--<link name="omni_wheel_coll_test_2">-->
+<!--  <visual name="omni_wheel_2_visual">  	-->
+<!--    <origin xyz="0 0.05 0" rpy="${M_PI2} 0 0"/>-->
+<!--     <geometry>-->
+<!--     		<cylinder length="0.025" radius="0.101"/>-->
+<!--     </geometry>-->
+<!--  </visual>    -->
+<!--</link>-->
+
+</macro>

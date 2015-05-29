@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro" name="dreamer_hand">
+
+  <property name="M_PI" value="3.1415926535897931" />
+  <property name="R_HAND" value="mh8" />
+  <property name="MESH" value="mid_res" />
+  <property name="MESH_COLL" value="low_res" />
+
+  <xacro:include filename="$(find hcrl_simulator)/models/generic_models.xml" />
+
+  <!-- Meka Hand -->
+  <xacro:include filename="$(find dreamer)/models/dreamer/meka_description/urdf/H2R2_r_hand_defs.urdf.xacro" />
+
+  <property name="M_PI" value="3.1415926535897931" />
+
+  <material name="GreyA"> <!-- darkest -->
+    <color rgba="0.3 0.3 0.3 1.0"/>
+  </material>
+
+  <material name="GreyB">
+    <color rgba="0.5 0.5 0.5 1.0"/>
+  </material>
+
+  <material name="GreyC">
+    <color rgba="0.7 0.7 0.7 1.0"/>
+  </material>
+
+  <!-- ===== DUMMY 'BASE' LINK ==== -->
+   <xacro:virtual_link name="dreamer_hand_base"
+                      origin_xyz="0 0 0.0"
+                      origin_rpy="0 0 0" />
+
+  <m3_r_hand side="r" reflect="1" parent="dreamer_hand_base">
+    <origin xyz="0.0 0.0 0.0" rpy="0 0 0" />
+  </m3_r_hand>
+
+
+
+</robot>

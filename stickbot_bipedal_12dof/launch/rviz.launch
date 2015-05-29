@@ -1,0 +1,8 @@
+<?xml version="1.0" ?>
+<launch>
+    <!-- Load the robot description parameter-->
+    <param name="robot_description"
+        command="$(find xacro)/xacro.py '$(find stickbot_bipedal_12dof)/models/stickbot_bipedal_12dof/xacro/stickbot_bipedal_12dof_linked_to_world.xacro'" />
+
+    <include file="$(find hcrl_simulator)/launch/rviz.xml"/>
+</launch>

@@ -1,0 +1,9 @@
+<?xml version="1.0" ?>
+<launch>
+    <!-- Enable simulation time -->
+    <param name="/use_sim_time" type="bool" value="true"/>
+
+    <!-- Start Gazebo with robot. -->
+    <node args="$(find stickbot_lowerleg_3dof)/worlds/stickbot_lowerleg_3dof.world"
+        name="gazebo" pkg="hcrl_simulator" type="run_gazebo"/>
+</launch>

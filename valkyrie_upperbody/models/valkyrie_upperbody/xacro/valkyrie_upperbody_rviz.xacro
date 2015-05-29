@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro" name="valkyrie_rviz">
+
+  <!-- RViz uses package:// for the model path. -->
+  <property name="modelPath" value="package://valkyrie/models/valkyrie" />
+
+  <xacro:include filename="$(find valkyrie)/models/valkyrie/xacro/valkyrie_colors.xacro" />
+  <xacro:include filename="$(find valkyrie)/models/valkyrie/xacro/valkyrie_upperbody_base.xacro" />
+
+  <link name="world">
+    <!-- Virtual Link -->
+    <inertial>
+      <mass value="0.1"/>
+      <origin rpy="0 0 0" xyz="0 0 1.2"/>
+      <inertia ixx="8.33333333333e-05" ixy="0.0" ixz="0.0" iyy="8.33333333333e-05" iyz="0.0" izz="0.000125"/>
+    </inertial>
+  </link>
+
+  <joint name="trunkOffset" type="fixed">
+    <origin rpy="0 -1.57 3.14" xyz="0 0 0.5"/>
+    <axis xyz="0 0 1"/>
+    <parent link="world"/>
+    <child link="v1/Trunk"/>
+  </joint>
+
+</robot>
+

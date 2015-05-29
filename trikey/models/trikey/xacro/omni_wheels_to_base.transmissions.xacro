@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<robot xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor"
+       xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
+       xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface">
+
+    <!--Wheel0-->
+    <transmission name="${OMNI_J}_t0" type="pr2_mechanism_model/SimpleTransmission">
+      <actuator name="${OMNI_J}_a0" />
+      <joint name="${OMNI_J}_j0" />
+      <mechanicalReduction>1</mechanicalReduction>
+    </transmission>
+    <!--Wheel1-->
+    <transmission name="${OMNI_J}_t1" type="pr2_mechanism_model/SimpleTransmission">
+      <actuator name="${OMNI_J}_a1" />
+      <joint name="${OMNI_J}_j1" />
+      <mechanicalReduction>1</mechanicalReduction>
+    </transmission>
+    <!--Wheel2-->
+    <transmission name="${OMNI_J}_t2" type="pr2_mechanism_model/SimpleTransmission">
+      <actuator name="${OMNI_J}_a2" />
+      <joint name="${OMNI_J}_j2" />
+      <mechanicalReduction>1</mechanicalReduction>
+    </transmission>
+
+</robot>

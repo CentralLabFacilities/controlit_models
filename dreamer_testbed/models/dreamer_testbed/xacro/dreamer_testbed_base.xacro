@@ -1,0 +1,115 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface" name="dreamer_testbed">
+
+  <property name="M_PI" value="3.1415926535897931" />
+  <property name="R_ARM" value="ma10" />
+  <property name="R_HAND" value="mh8" />
+  <property name="TORSO" value="mt3" />
+  <property name="HEAD" value="ms2" />
+  <property name="MESH" value="mid_res" />
+  <property name="MESH_COLL" value="low_res" />
+
+  <!-- 80/20 properties-->
+  <property name="KgPerM" value="1.0715" />
+  <property name="SideLength" value="0.0381"/>
+  <property name="SideLengthSquared" value="0.00145161"/>
+  <property name="StandHeight" value="0.8"/>
+
+  <xacro:include filename="$(find hcrl_simulator)/models/generic_models.xml" />
+
+  <!--Testbed-->
+  <xacro:include filename="$(find dreamer_testbed)/models/dreamer_testbed/xacro/testbed.xacro"/>
+
+  <!--Torso-->
+  <xacro:include filename="$(find dreamer_no_left_arm)/models/dreamer_no_left_arm/xacro/dreamer_torso.xacro"/>
+
+  <!-- Meka Arm -->
+  <xacro:include filename="$(find dreamer)/models/dreamer/meka_description/urdf/A2R3_r_arm_defs.urdf.xacro" />
+
+  <!-- Meka Hand -->
+  <xacro:include filename="$(find dreamer)/models/dreamer/meka_description/urdf/H2R2_r_hand_defs.urdf.xacro" />
+
+  <!-- Meka Head -->
+  <xacro:include filename="$(find dreamer)/models/dreamer/meka_description/urdf/S2R1_head_defs.urdf.xacro" />
+
+  <property name="M_PI" value="3.1415926535897931" />
+  <material name="GreyA"> <!-- darkest -->
+    <color rgba="0.3 0.3 0.3 1.0"/>
+  </material>
+
+  <material name="GreyB">
+    <color rgba="0.5 0.5 0.5 1.0"/>
+  </material>
+
+  <material name="GreyC">
+    <color rgba="0.7 0.7 0.7 1.0"/>
+  </material>
+
+  <m3_r_arm side="r" reflect="1" parent="upper">
+    <origin xyz="0.0 -0.18465 0.2337" rpy="0 0 0" />
+  </m3_r_arm>
+
+  <m3_head side="r" reflect="1" parent="upper">
+    <origin xyz="0.0 0.0 0.31155" rpy="0 0 0" />
+  </m3_head>
+
+  <m3_r_hand side="r" reflect="1" parent="handmount_RIGHT">
+    <origin xyz="0.0 0.0 0.0" rpy="0 0 0" />
+  </m3_r_hand>
+
+  <testbed PARENT="panplate" stand_height="${StandHeight}" arm_back="0.25" arm_up="1.05" arm_forward="0.65" arm_drop="0.1">
+    <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
+  </testbed>
+
+  <dreamer_torso height="${StandHeight}" />
+
+  <!--
+  The following enables torque feedback.  Without these, the following warning will be printed
+  by Gazebo when the shared memory plugin is used:
+
+  Warning [ODEJoint.cc:1105] GetForceTorque: forgot to set <provide_feedback>?
+  -->
+  <gazebo reference="m3joint_mt3_j0">
+    <provideFeedback value="true"/>
+  </gazebo>
+  <gazebo reference="m3joint_mt3_j1">
+    <provideFeedback value="true"/>
+  </gazebo>
+  <gazebo reference="m3joint_slave_mt3_j2">
+    <provideFeedback value="true"/>
+  </gazebo>
+  <gazebo reference="m3joint_ma10_j0">
+    <provideFeedback value="true"/>
+  </gazebo>
+  <gazebo reference="m3joint_ma10_j1">
+    <provideFeedback value="true"/>
+  </gazebo>
+  <gazebo reference="m3joint_ma10_j2">
+    <provideFeedback value="true"/>
+  </gazebo>
+  <gazebo reference="m3joint_ma10_j3">
+    <provideFeedback value="true"/>
+  </gazebo>
+  <gazebo reference="m3joint_ma10_j4">
+    <provideFeedback value="true"/>
+  </gazebo>
+  <gazebo reference="m3joint_ma10_j5">
+    <provideFeedback value="true"/>
+  </gazebo>
+  <gazebo reference="m3joint_ma10_j6">
+    <provideFeedback value="true"/>
+  </gazebo>
+  <gazebo reference="m3joint_ms2_j0">
+    <provideFeedback value="true"/>
+  </gazebo>
+  <gazebo reference="m3joint_ms2_j1">
+    <provideFeedback value="true"/>
+  </gazebo>
+  <gazebo reference="m3joint_ms2_j2">
+    <provideFeedback value="true"/>
+  </gazebo>
+  <gazebo reference="m3joint_ms2_j3">
+    <provideFeedback value="true"/>
+  </gazebo>
+
+</robot>

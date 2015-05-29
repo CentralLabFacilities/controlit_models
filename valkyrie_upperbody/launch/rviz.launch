@@ -1,0 +1,8 @@
+<?xml version="1.0" ?>
+<launch>
+    <!-- Load the robot description parameter-->
+    <param name="robot_description"
+        command="$(find xacro)/xacro.py '$(find valkyrie_upperbody)/models/valkyrie_upperbody/xacro/valkyrie_upperbody_rviz.xacro'" />
+
+    <include file="$(find hcrl_simulator)/launch/rviz.xml"/>
+</launch>

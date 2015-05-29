@@ -1,0 +1,24 @@
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="atlas_legs_plain" >
+
+    <!-- rViz uses package:// for the model path. -->
+    <property name="modelPath" value="package://atlas_plain/models/atlas_plain" />
+
+    <xacro:include filename="$(find atlas_legs_plain)/models/atlas_legs_plain/xacro/atlas_legs_plain_base.xacro" />
+    <atlas_legs_plain />
+
+    <link name="world">
+        <!-- Virtual Link -->
+        <inertial>
+            <mass value="0.1"/>
+            <origin rpy="0 0 0" xyz="0 0 1.2"/>
+            <inertia ixx="8.33333333333e-05" ixy="0.0" ixz="0.0" iyy="8.33333333333e-05" iyz="0.0" izz="0.000125"/>
+        </inertial>
+    </link>
+
+    <joint name="pelvisOffset" type="fixed">
+        <origin rpy="0 0 0" xyz="0 0 0"/>
+        <axis xyz="0 0 1"/>
+        <parent link="world"/>
+        <child link="pelvis"/>
+    </joint>
+</robot>

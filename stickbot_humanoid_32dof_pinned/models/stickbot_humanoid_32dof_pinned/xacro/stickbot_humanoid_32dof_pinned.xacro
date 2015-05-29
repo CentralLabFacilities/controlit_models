@@ -1,0 +1,16 @@
+<?xml version="1.0" ?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro" name="stickbot_humanoid_32dof_pinned">
+
+  <xacro:include filename="$(find hcrl_simulator)/models/generic_models.xml" />
+  <xacro:include filename="$(find stickbot_humanoid_32dof)/models/stickbot_humanoid_32dof/xacro/stickbot_humanoid_32dof_base.xacro" />
+
+  <stickbot_humanoid_32dof />
+
+  <!-- Add the Gazebo plugins! -->
+  <gazebo version='1.2'>
+    <plugin filename="libPinPlugin.so" name="PinPlugin">
+      <pin_root_link>1</pin_root_link>
+    </plugin>
+  </gazebo>
+
+</robot>

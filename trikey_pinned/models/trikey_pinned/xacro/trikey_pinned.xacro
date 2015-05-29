@@ -1,0 +1,39 @@
+<?xml version='1.0'?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro" name="trikey">
+
+    <xacro:include filename="$(find trikey)/models/trikey/xacro/trikey_base.xacro"/>
+    <xacro:include filename="$(find omni_wheel)/models/omni_wheel/xacro/omni_wheel.xacro"/>
+
+    <!-- ===== DUMMY 'BASE' LINK ==== -->
+<!--     <xacro:include filename="$(find hcrl_simulator)/models/generic_models.xml" />
+    <xacro:virtual_link name="trikey_pinned_base"
+                      origin_xyz="0 0 0"
+                      origin_rpy="0 0 0" />
+
+    <xacro:fixed_joint jointName="trikeyBaseOffset"
+                     parent="trikey_pinned_base" child="trikey_base"
+                     origin_xyz="0 0 0.25"
+                     origin_rpy="0 0 0" />
+ -->
+    <xacro:trikey_base modelPath="model://trikey"/>
+    <xacro:omni_wheel_0 modelPath="model://trikey" subwheelJointType="fixed"/>
+    <xacro:omni_wheel_1 modelPath="model://trikey" subwheelJointType="fixed"/>
+    <xacro:omni_wheel_2 modelPath="model://trikey" subwheelJointType="fixed"/>
+
+    <!-- Add the Gazebo plugins! -->
+    <gazebo version='1.2'>
+
+        <!-- <plugin name="pos_plugin_ros" filename="libgazebo_ros_p3d.so">
+            <alwaysOn>true</alwaysOn>
+            <updateRate>1000.0</updateRate>
+            <bodyName>trikey_base</bodyName>
+            <topicName>/trikey_pinned/gazebo/root_link_odom</topicName>
+            <frameName>world</frameName>
+            <rpyOffset>0 0 0</rpyOffset>
+            <xyzOffset>0 0 0</xyzOffset>
+        </plugin> -->
+        <plugin filename="libPinPlugin.so" name="PinPlugin">
+            <pin_root_link>1</pin_root_link>
+        </plugin>
+    </gazebo>
+</robot>

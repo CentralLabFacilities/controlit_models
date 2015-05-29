@@ -1,0 +1,451 @@
+<?xml version="1.0" ?>
+<robot name="stickbot_bipedal_12dof" xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller" xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface" xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor" xmlns:xacro="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface">
+
+  <macro name="stickbot_bipedal_12dof">
+    <link name="pelvis">
+      <inertial>
+        <mass value="3"/>
+        <origin xyz="0.0 -0.25 0.0"/>
+        <inertia ixx="0.008667" ixy="0" ixz="0" iyy="0.008667" iyz="0" izz="0.01667"/>
+      </inertial>
+      <visual>
+        <origin rpy="0 0 0 " xyz="0.0 -0.25 0.05"/>
+        <geometry name="pelvis">
+          <box size="0.05 0.5 0.1"/>
+        </geometry>
+        <material name="grey">
+          <color rgba="0.627 0.627 0.627 1"/>
+        </material>
+      </visual>
+      <collision>
+        <origin rpy="0 0 0 " xyz="0.0 -0.25 0.05"/>
+        <geometry name="pelvis">
+          <box size="0.05 0.5 0.1"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <joint name="rightHipSupinator" type="continuous">
+      <axis xyz="0 0 1"/>
+      <origin rpy="0 0 0" xyz="0 -0.5 0.0"/>
+      <dynamics damping="0.1"/>
+      <parent link="pelvis"/>
+      <child link="rightHipLink1"/>
+      <limit effort="100" lower="-3.14" upper="3.14" velocity="1"/>
+    </joint>
+
+    <link name="rightHipLink1">
+      <inertial>
+        <mass value="0.25"/>
+        <origin xyz="0.0 0.0 -0.015"/>
+        <inertia ixx="0.00015" ixy="0" ixz="0" iyy="0.00015" iyz="0" izz="0.000225"/>
+      </inertial>
+      <visual>
+        <origin rpy="0 1.507 0" xyz="0 0.0 -0.015"/>
+        <geometry name="rightHipLink1">
+          <cylinder radius="0.03" length="0.03"/>
+        </geometry>
+        <material name="grey">
+          <color rgba="0.627 0.627 0.627 1"/>
+        </material>
+      </visual>
+      <collision>
+        <origin rpy="1.507 0 0.0 " xyz="0 0.0 -0.015"/>
+        <geometry name="rightHipLink1">
+          <cylinder radius="0.03" length="0.03"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <joint name="rightHipExtensor" type="continuous">
+      <axis xyz="0 1 0"/>
+      <origin rpy="0 0 0" xyz="0 0 -0.03"/>
+      <dynamics damping="0.1"/>
+      <parent link="rightHipLink1"/>
+      <child link="rightHipExtensorLink"/>
+      <limit effort="100" lower="-3.14" upper="3.14" velocity="1"/>
+    </joint>
+
+    <link name="rightHipExtensorLink">
+      <inertial>
+        <mass value="0.25"/>
+        <origin xyz="0.0 0.0 -0.015"/>
+        <inertia ixx="0.00015" ixy="0" ixz="0" iyy="0.00015" iyz="0" izz="0.000225"/>
+      </inertial>
+      <visual>
+        <origin rpy="1.507 0 0" xyz="0 0 -0.015"/>
+        <geometry name="rightHipExtensorLink">
+          <cylinder radius="0.03" length="0.03"/>
+        </geometry>
+        <material name="grey">
+          <color rgba="0.627 0.627 0.627 1"/>
+        </material>
+      </visual>
+      <collision>
+        <origin rpy="1.507 0 0.0 " xyz="0 0 -0.015"/>
+        <geometry name="rightHipExtensorLink">
+          <cylinder radius="0.03" length="0.03"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <joint name="rightHipAductor" type="continuous">
+      <axis xyz="1 0 0"/>
+      <origin rpy="0 0 0" xyz="0 0 -0.03"/>
+      <parent link="rightHipExtensorLink"/>
+      <child link="rightUpperLeg"/>
+      <dynamics damping="0.1"/>
+      <limit effort="100" lower="-3.14" upper="3.14" velocity="1"/>
+    </joint>
+
+    <link name="rightUpperLeg">
+      <inertial>
+        <mass value="2.0"/>
+        <origin xyz="-0.0 0 -0.15"/>
+        <inertia ixx="0.01545" ixy="0" ixz="0" iyy="0.01545" iyz="0" izz="0.0009"/>
+      </inertial>
+      <visual>
+        <origin rpy="0 0 0 " xyz="0 0 -0.15"/>
+        <geometry name="rightUpperLeg">
+          <cylinder radius="0.03" length="0.3"/>
+        </geometry>
+        <material name="grey">
+          <color rgba="0.627 0.627 0.627 1"/>
+        </material>
+      </visual>
+      <collision>
+        <origin rpy="0 0 0 " xyz="0 0 -0.3"/>
+        <geometry name="rightUpperLeg">
+          <cylinder radius="0.03" length="0.3"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <joint name="rightKnee" type="continuous">
+      <axis xyz="0 1 0"/>
+      <origin rpy="0 0 0" xyz="0 0 -0.3"/>
+      <parent link="rightUpperLeg"/>
+      <child link="rightLowerLeg"/>
+      <dynamics damping="0.1"/>
+      <limit effort="100" lower="-3.14" upper="3.14" velocity="1"/>
+    </joint>
+
+    <link name="rightLowerLeg">
+      <inertial>
+        <mass value="2.0"/>
+        <origin xyz="-0.0 0 -0.15"/>
+        <inertia ixx="0.01545" ixy="0" ixz="0" iyy="0.01545" iyz="0" izz="0.0009"/>
+      </inertial>
+      <visual>
+        <origin rpy="0 0 0 " xyz="0 0 -0.15"/>
+        <geometry name="rightLowerLeg">
+          <cylinder radius="0.03" length="0.3"/>
+        </geometry>
+        <material name="grey">
+          <color rgba="0.627 0.627 0.627 1"/>
+        </material>
+      </visual>
+      <collision>
+        <origin rpy="0 0 0 " xyz="0 0 -0.15"/>
+        <geometry name="rightLowerLeg">
+          <cylinder radius="0.03" length="0.3"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <joint name="rightAnklePitch" type="continuous">
+      <axis xyz="0 1 0"/>
+      <origin rpy="0 0 0" xyz="0 0 -0.3"/>
+      <dynamics damping="0.1"/>
+      <parent link="rightLowerLeg"/>
+      <child link="rightAnkleLink"/>
+      <limit effort="100" lower="-3.14" upper="3.14" velocity="1"/>
+    </joint>
+
+    <link name="rightAnkleLink">
+      <inertial>
+        <mass value="0.25"/>
+        <origin xyz="0.0 0.0 -0.015"/>
+        <inertia ixx="0.00015" ixy="0" ixz="0" iyy="0.00015" iyz="0" izz="0.000225"/>
+      </inertial>
+      <visual>
+        <origin rpy="1.507 0 0" xyz="0 0 -0.015"/>
+        <geometry name="rightAnkleLink">
+          <cylinder radius="0.03" length="0.03"/>
+        </geometry>
+        <material name="grey">
+          <color rgba="0.627 0.627 0.627 1"/>
+        </material>
+      </visual>
+      <collision>
+         <origin rpy="1.507 0 0" xyz="0 0 -0.015"/>
+        <geometry name="rightAnkleLink">
+          <cylinder radius="0.03" length="0.03"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <joint name="rightAnkleRoll" type="continuous">
+      <axis xyz="1 0 0"/>
+      <origin rpy="0 0 0" xyz="0.025 0 -0.03"/>
+      <parent link="rightAnkleLink"/>
+      <child link="rightFoot"/>
+      <dynamics damping="0.1"/>
+      <limit effort="100" lower="-3.14" upper="3.14" velocity="1"/>
+    </joint>
+
+    <link name="rightFoot">
+      <inertial>
+        <mass value="10"/>
+        <origin xyz="0.03 0 -0.01"/>
+        <inertia ixx="0.008667" ixy="0" ixz="0" iyy="0.008667" iyz="0" izz="0.01667"/>
+      </inertial>
+      <visual>
+        <origin rpy="0 0 0 " xyz="0.0 0 -0.01"/>
+        <geometry name="rightFoot">
+          <box size="0.5 0.3 0.02"/>
+        </geometry>
+        <material name="grey">
+          <color rgba="0.627 0.627 0.627 1"/>
+        </material>
+      </visual>
+      <collision>
+        <origin rpy="0 0 0 " xyz="0.0 0 -0.01"/>
+        <geometry name="rightFoot">
+          <box size="0.5 0.3 0.02"/>
+        </geometry>
+      </collision>
+    </link>
+
+
+    <joint name="leftHipSupinator" type="continuous">
+      <axis xyz="0 0 1"/>
+      <origin rpy="0 0 0" xyz="0 0.0 0.0"/>
+      <parent link="pelvis"/>
+      <child link="leftHipLink1"/>
+      <dynamics damping="0.1"/>
+      <limit effort="100" lower="-3.14" upper="3.14" velocity="1"/>
+    </joint>
+
+    <link name="leftHipLink1">
+      <inertial>
+        <mass value="0.25"/>
+        <origin xyz="0.0 0.0 -0.015"/>
+        <inertia ixx="0.00015" ixy="0" ixz="0" iyy="0.00015" iyz="0" izz="0.000225"/>
+      </inertial>
+      <visual>
+        <origin rpy="0 1.507 0" xyz="0 0.0 -0.015"/>
+        <geometry name="leftHipLink1">
+          <cylinder radius="0.03" length="0.03"/>
+        </geometry>
+        <material name="grey">
+          <color rgba="0.627 0.627 0.627 1"/>
+        </material>
+      </visual>
+      <collision>
+        <origin rpy="1.507 0 0.0 " xyz="0 0.0 -0.015"/>
+        <geometry name="leftHipLink1">
+          <cylinder radius="0.03" length="0.03"/>
+        </geometry>
+      </collision>
+    </link>
+
+     <joint name="leftHipExtensor" type="continuous">
+      <axis xyz="0 1 0"/>
+      <origin rpy="0 0 0" xyz="0 0 -0.03"/>
+      <parent link="leftHipLink1"/>
+      <child link="leftHipExtensorLink"/>
+      <dynamics damping="0.1"/>
+      <limit effort="100" lower="-3.14" upper="3.14" velocity="1"/>
+    </joint>
+
+    <link name="leftHipExtensorLink">
+      <inertial>
+        <mass value="0.25"/>
+        <origin xyz="0.0 0.0 -0.015"/>
+        <inertia ixx="0.00015" ixy="0" ixz="0" iyy="0.00015" iyz="0" izz="0.000225"/>
+      </inertial>
+      <visual>
+        <origin rpy="1.507 0 0" xyz="0 0 -0.015"/>
+        <geometry name="leftHipExtensorLink">
+          <cylinder radius="0.03" length="0.03"/>
+        </geometry>
+        <material name="grey">
+          <color rgba="0.627 0.627 0.627 1"/>
+        </material>
+      </visual>
+      <collision>
+        <origin rpy="1.507 0 0.0 " xyz="0 0 -0.015"/>
+        <geometry name="leftHipExtensorLink">
+          <cylinder radius="0.03" length="0.03"/>
+        </geometry>
+      </collision>
+    </link>
+
+     <joint name="leftHipAductor" type="continuous">
+      <axis xyz="1 0 0"/>
+      <origin rpy="0 0 0" xyz="0 0 -0.03"/>
+      <parent link="leftHipExtensorLink"/>
+      <child link="leftUpperLeg"/>
+      <dynamics damping="0.1"/>
+      <limit effort="100" lower="-3.14" upper="3.14" velocity="1"/>
+    </joint>
+
+    <link name="leftUpperLeg">
+      <inertial>
+        <mass value="2.0"/>
+        <origin xyz="-0.0 0 -0.15"/>
+        <inertia ixx="0.01545" ixy="0" ixz="0" iyy="0.01545" iyz="0" izz="0.0009"/>
+      </inertial>
+      <visual>
+        <origin rpy="0 0 0 " xyz="0 0 -0.15"/>
+        <geometry name="leftUpperLeg">
+          <cylinder radius="0.03" length="0.3"/>
+        </geometry>
+        <material name="grey">
+          <color rgba="0.627 0.627 0.627 1"/>
+        </material>
+      </visual>
+      <collision>
+        <origin rpy="0 0 0 " xyz="0 0 -0.3"/>
+        <geometry name="leftUpperLeg">
+          <cylinder radius="0.03" length="0.3"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <joint name="leftKnee" type="continuous">
+      <axis xyz="0 1 0"/>
+      <origin rpy="0 0 0" xyz="0 0 -0.3"/>
+      <parent link="leftUpperLeg"/>
+      <child link="leftLowerLeg"/>
+      <dynamics damping="0.1"/>
+      <limit effort="100" lower="-3.14" upper="3.14" velocity="1"/>
+    </joint>
+
+    <link name="leftLowerLeg">
+      <inertial>
+        <mass value="2.0"/>
+        <origin xyz="-0.0 0 -0.15"/>
+        <inertia ixx="0.01545" ixy="0" ixz="0" iyy="0.01545" iyz="0" izz="0.0009"/>
+      </inertial>
+      <visual>
+        <origin rpy="0 0 0 " xyz="0 0 -0.15"/>
+        <geometry name="leftLowerLeg">
+          <cylinder radius="0.03" length="0.3"/>
+        </geometry>
+        <material name="grey">
+          <color rgba="0.627 0.627 0.627 1"/>
+        </material>
+      </visual>
+      <collision>
+        <origin rpy="0 0 0 " xyz="0 0 -0.15"/>
+        <geometry name="leftLowerLeg">
+          <cylinder radius="0.03" length="0.3"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <joint name="leftAnklePitch" type="continuous">
+      <axis xyz="0 1 0"/>
+      <origin rpy="0 0 0" xyz="0 0 -0.3"/>
+      <parent link="leftLowerLeg"/>
+      <child link="leftAnkleLink"/>
+      <dynamics damping="0.1"/>
+      <limit effort="100" lower="-3.14" upper="3.14" velocity="1"/>
+    </joint>
+
+    <link name="leftAnkleLink">
+      <inertial>
+        <mass value="0.25"/>
+        <origin xyz="0.0 0.0 -0.015"/>
+        <inertia ixx="0.00015" ixy="0" ixz="0" iyy="0.00015" iyz="0" izz="0.000225"/>
+      </inertial>
+      <visual>
+        <origin rpy="1.507 0 0" xyz="0 0 -0.015"/>
+        <geometry name="leftAnkleLink">
+          <cylinder radius="0.03" length="0.03"/>
+        </geometry>
+        <material name="grey">
+          <color rgba="0.627 0.627 0.627 1"/>
+        </material>
+      </visual>
+      <collision>
+        <origin rpy="0 0 0.0 " xyz="0 0 -0.015"/>
+        <geometry name="leftAnkleLink">
+          <cylinder radius="0.03" length="0.03"/>
+        </geometry>
+      </collision>
+    </link>
+
+
+    <joint name="leftAnkleRoll" type="continuous">
+      <axis xyz="1 0 0"/>
+      <origin rpy="0 0 0" xyz="0.025 0 -0.03"/>
+      <parent link="leftAnkleLink"/>
+      <child link="leftFoot"/>
+      <dynamics damping="0.1"/>
+      <limit effort="100" lower="-3.14" upper="3.14" velocity="1"/>
+    </joint>
+
+    <link name="leftFoot">
+      <inertial>
+        <mass value="10"/>
+        <origin xyz="0.03 0 -0.01"/>
+        <inertia ixx="0.008667" ixy="0" ixz="0" iyy="0.008667" iyz="0" izz="0.01667"/>
+      </inertial>
+      <visual>
+        <origin rpy="0 0 0 " xyz="0.0 0 -0.01"/>
+        <geometry name="leftFoot">
+        <box size="0.5 0.3 0.02"/>
+        </geometry>
+        <material name="grey">
+          <color rgba="0.627 0.627 0.627 1"/>
+        </material>
+      </visual>
+      <collision>
+        <origin rpy="0 0 0 " xyz="0.0 0 -0.01"/>
+        <geometry name="leftFoot">
+          <box size="0.5 0.3 0.02"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <gazebo reference="rightHipSupinator">
+      <provideFeedback value="true"/>
+    </gazebo>
+    <gazebo reference="rightHipExtensor">
+      <provideFeedback value="true"/>
+    </gazebo>
+    <gazebo reference="rightHipAductor">
+      <provideFeedback value="true"/>
+    </gazebo>
+    <gazebo reference="rightKnee">
+      <provideFeedback value="true"/>
+    </gazebo>
+    <gazebo reference="rightAnkleRoll">
+      <provideFeedback value="true"/>
+    </gazebo>
+    <gazebo reference="rightAnklePitch">
+      <provideFeedback value="true"/>
+    </gazebo>
+    <gazebo reference="leftHipSupinator">
+      <provideFeedback value="true"/>
+    </gazebo>
+    <gazebo reference="leftHipExtensor">
+      <provideFeedback value="true"/>
+    </gazebo>
+    <gazebo reference="leftHipAductor">
+      <provideFeedback value="true"/>
+    </gazebo>
+    <gazebo reference="leftKnee">
+      <provideFeedback value="true"/>
+    </gazebo>
+    <gazebo reference="leftAnkleRoll">
+      <provideFeedback value="true"/>
+    </gazebo>
+    <gazebo reference="leftAnklePitch">
+      <provideFeedback value="true"/>
+    </gazebo>
+  </macro>
+</robot>

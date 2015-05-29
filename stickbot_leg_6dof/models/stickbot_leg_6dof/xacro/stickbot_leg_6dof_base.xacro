@@ -1,0 +1,238 @@
+<?xml version="1.0" ?>
+
+<robot name="stickbot_leg_6dof" xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller" xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface" xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor" xmlns:xacro="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface">
+
+    <macro name="stickbot_leg_6dof">
+        <link name="Foot">
+            <inertial>
+                <mass value="10"/>
+                <origin xyz="0 0 0.0"/>
+                <inertia ixx="0.008667" ixy="0" ixz="0" iyy="0.008667" iyz="0" izz="0.01667"/>
+                <!-- <inertia ixx="0.01667" ixy="0" ixz="0" iyy="0.01667" iyz="0" izz="0.00866"/> -->
+            </inertial>
+            <visual>
+                <origin rpy="0 0 0 " xyz="0 0 0.01"/>
+                <geometry name="Foot">
+                <box size="0.5 0.3 0.04"/> <!--NOTE: These dimensions don't match inertial dimensions -->
+                </geometry>
+                <material name="grey">
+                    <color rgba="0.627 0.627 0.627 1"/>
+                </material>
+            </visual>
+            <collision>
+                <origin rpy="0 0 0 " xyz="0 0 0.02"/>
+                <geometry name="Foot">
+                    <box size="0.5 0.3 0.04"/>
+                </geometry>
+            </collision>
+        </link>
+
+        <joint name="AnkleRoll" type="continuous">
+            <axis xyz="1 0 0"/>
+            <origin rpy="0 0 0" xyz="-0.025 0 0.015"/>
+            <parent link="Foot"/>
+            <child link="robot_body_2"/>
+            <limit effort="100" lower="-3.14" upper="3.14" velocity="1"/>
+        </joint>
+
+        <link name="robot_body_2">
+            <inertial>
+                <mass value="0.25"/>
+                <origin xyz="0.0 0.0 0.015"/>
+                <inertia ixx="0.00015" ixy="0" ixz="0" iyy="0.00015" iyz="0" izz="0.000225"/>
+            </inertial>
+            <visual>
+                <origin rpy="1.507 0 0" xyz="0 0 0.015"/>
+                <geometry name="robot_body_2">
+                    <cylinder radius="0.03" length="0.03"/>
+                </geometry>
+                <material name="grey">
+                    <color rgba="0.627 0.627 0.627 1"/>
+                </material>
+            </visual>
+            <collision>
+                <origin rpy="0 0 0.0 " xyz="0 0 0.015"/>
+                <geometry name="robot_body_2">
+                    <cylinder radius="0.03" length="0.03"/>
+                </geometry>
+            </collision>
+        </link>
+
+
+        <joint name="AnklePitch" type="continuous">
+            <axis xyz="0 1 0"/>
+            <origin rpy="0 0 0" xyz="0 0 0.03"/>
+            <parent link="robot_body_2"/>
+            <child link="robot_body_3"/>
+            <limit effort="100" lower="-3.14" upper="3.14" velocity="1"/>
+        </joint>
+
+        <link name="robot_body_3">
+            <inertial>
+                <mass value="2.0"/>
+                <origin xyz="-0.0 0 0.15"/>
+                <inertia ixx="0.01545" ixy="0" ixz="0" iyy="0.01545" iyz="0" izz="0.0009"/>
+            </inertial>
+            <visual>
+                <origin rpy="0 0 0 " xyz="0 0 0.15"/>
+                <geometry name="robot_body_3">
+                    <cylinder radius="0.03" length="0.3"/>
+                </geometry>
+                <material name="grey">
+                    <color rgba="0.627 0.627 0.627 1"/>
+                </material>
+            </visual>
+            <collision>
+                <origin rpy="0 0 0 " xyz="0 0 0.15"/>
+                <geometry name="robot_body_3">
+                    <cylinder radius="0.03" length="0.3"/>
+                </geometry>
+            </collision>
+        </link>
+
+         <joint name="Knee" type="continuous">
+            <axis xyz="0 1 0"/>
+            <origin rpy="0 0 0" xyz="0 0 0.3"/>
+            <parent link="robot_body_3"/>
+            <child link="robot_body_4"/>
+            <limit effort="100" lower="-3.14" upper="3.14" velocity="1"/>
+        </joint>
+
+        <link name="robot_body_4">
+            <inertial>
+                <mass value="2.0"/>
+                <origin xyz="-0.0 0 0.15"/>
+                <inertia ixx="0.01545" ixy="0" ixz="0" iyy="0.01545" iyz="0" izz="0.0009"/>
+            </inertial>
+            <visual>
+                <origin rpy="0 0 0 " xyz="0 0 0.15"/>
+                <geometry name="robot_body_4">
+                    <cylinder radius="0.03" length="0.3"/>
+                </geometry>
+                <material name="grey">
+                    <color rgba="0.627 0.627 0.627 1"/>
+                </material>
+            </visual>
+            <collision>
+                <origin rpy="0 0 0 " xyz="0 0 0.3"/>
+                <geometry name="robot_body_4">
+                    <cylinder radius="0.03" length="0.3"/>
+                </geometry>
+            </collision>
+        </link>
+
+        <joint name="HipAdductor" type="continuous">
+            <axis xyz="1 0 0"/>
+            <origin rpy="0 0 0" xyz="0 0 0.3"/>
+            <parent link="robot_body_4"/>
+            <child link="robot_body_5"/>
+            <limit effort="100" lower="-3.14" upper="3.14" velocity="1"/>
+        </joint>
+
+        <link name="robot_body_5">
+            <inertial>
+                <mass value="0.25"/>
+                <origin xyz="0.0 0.0 0.015"/>
+                <inertia ixx="0.00015" ixy="0" ixz="0" iyy="0.00015" iyz="0" izz="0.000225"/>
+            </inertial>
+            <visual>
+                <origin rpy="1.507 0 0" xyz="0 0 0.015"/>
+                <geometry name="robot_body_5">
+                    <cylinder radius="0.03" length="0.03"/>
+                </geometry>
+                <material name="grey">
+                    <color rgba="0.627 0.627 0.627 1"/>
+                </material>
+            </visual>
+            <collision>
+                <origin rpy="1.507 0 0.0 " xyz="0 0 0.015"/>
+                <geometry name="robot_body_5">
+                    <cylinder radius="0.03" length="0.03"/>
+                </geometry>
+            </collision>
+        </link>
+
+        <joint name="HipExtensor" type="continuous">
+            <axis xyz="0 1 0"/>
+            <origin rpy="0 0 0" xyz="0 0 0.03"/>
+            <parent link="robot_body_5"/>
+            <child link="robot_body_6"/>
+            <limit effort="100" lower="-3.14" upper="3.14" velocity="1"/>
+        </joint>
+
+        <link name="robot_body_6">
+            <inertial>
+                <mass value="0.25"/>
+                <origin xyz="0.0 0.0 0.015"/>
+                <inertia ixx="0.00015" ixy="0" ixz="0" iyy="0.00015" iyz="0" izz="0.000225"/>
+            </inertial>
+            <visual>
+                <origin rpy="0 1.507 0" xyz="0 0 0.015"/>
+                <geometry name="robot_body_6">
+                    <cylinder radius="0.03" length="0.03"/>
+                </geometry>
+                <material name="grey">
+                    <color rgba="0.627 0.627 0.627 1"/>
+                </material>
+            </visual>
+            <collision>
+                <origin rpy="1.507 0 0.0 " xyz="0 0 0.015"/>
+                <geometry name="robot_body_6">
+                    <cylinder radius="0.03" length="0.03"/>
+                </geometry>
+            </collision>
+        </link>
+
+        <joint name="HipSupinator" type="continuous">
+            <axis xyz="0 0 1"/>
+            <origin rpy="0 0 0" xyz="0 0.0 0.03"/>
+            <parent link="robot_body_6"/>
+            <child link="robot_body_7"/>
+            <limit effort="100" lower="-3.14" upper="3.14" velocity="1"/>
+        </joint>
+
+        <link name="robot_body_7">
+            <inertial>
+                <mass value="3"/>
+                <origin xyz="0 -0.1 0.05"/>
+                <inertia ixx="0.008667" ixy="0" ixz="0" iyy="0.008667" iyz="0" izz="0.01667"/>
+            </inertial>
+            <visual>
+                <origin rpy="0 0 0 " xyz="0.0 -0.1 0.05"/>
+                <geometry name="robot_body_7">
+                    <box size="0.05 0.2 0.1"/>
+                </geometry>
+                <material name="grey">
+                    <color rgba="0.627 0.627 0.627 1"/>
+                </material>
+            </visual>
+            <collision>
+                <origin rpy="0 0 0 " xyz="0.0 -0.1 0.05"/>
+                <geometry name="robot_body_7">
+                    <box size="0.05 0.2 0.1"/>
+                </geometry>
+            </collision>
+        </link>
+
+        <gazebo reference="AnkleRoll">
+            <provideFeedback value="true"/>
+        </gazebo>
+        <gazebo reference="AnklePitch">
+            <provideFeedback value="true"/>
+        </gazebo>
+        <gazebo reference="Knee">
+            <provideFeedback value="true"/>
+        </gazebo>
+        <gazebo reference="HipAdductor">
+            <provideFeedback value="true"/>
+        </gazebo>
+        <gazebo reference="HipExtensor">
+            <provideFeedback value="true"/>
+        </gazebo>
+        <gazebo reference="HipSupinator">
+            <provideFeedback value="true"/>
+        </gazebo>
+
+    </macro>
+
+</robot>

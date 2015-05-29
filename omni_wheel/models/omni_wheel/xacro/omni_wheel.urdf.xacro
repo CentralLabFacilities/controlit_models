@@ -1,0 +1,13 @@
+<?xml version='1.0'?>
+<robot name="omni_wheel" xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller" xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface" xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor" xmlns:xacro="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface">
+
+<!-- <property name="M_PI" value="3.1415926535897931" />
+<property name="M_PI2" value="1.57079632679" /> -->
+<!-- <property name="TRK_MESH" value="../trikey/meshes/low_res" /> -->
+<xacro:include filename="$(find omni_wheel)/models/omni_wheel/xacro/omni_wheel.xacro"/>
+
+<!--Create omni wheel from xacro-->
+<xacro:omni_wheel_18subs wheel_name="omni_wheel_0" wheel_radius="0.09" wheel_mass="0.66625" wheel_visual="$(find trikey)/models/trikey/meshes/low_res/wheel_set_assembly2_coarse.STL" ixx="0.001603175" iyy="0.002798144" izz="0.001603387" ixy="0.000015199" ixz="0.000004598" iyz="0.000041656" subwheel_mass="0.01" subwheel_joint_type="continuous" color="blue"/>
+
+
+</robot>

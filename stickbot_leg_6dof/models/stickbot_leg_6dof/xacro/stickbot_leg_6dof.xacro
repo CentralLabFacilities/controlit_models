@@ -1,0 +1,4 @@
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="stickbot_leg_6dof" >
+    <xacro:include filename="$(find stickbot_leg_6dof)/models/stickbot_leg_6dof/xacro/stickbot_leg_6dof_base.xacro" />
+    <stickbot_leg_6dof />
+</robot>

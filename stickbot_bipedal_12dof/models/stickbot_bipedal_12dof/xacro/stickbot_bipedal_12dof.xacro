@@ -1,0 +1,4 @@
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="stickbot_bipedal_12dof" >
+    <xacro:include filename="$(find stickbot_bipedal_12dof)/models/stickbot_bipedal_12dof/xacro/stickbot_bipedal_12dof_base.xacro" />
+    <stickbot_bipedal_12dof />
+</robot>

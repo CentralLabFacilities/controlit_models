@@ -1,0 +1,77 @@
+<?xml version="1.0"?>
+<robot name="dreamer_testbed_floating_camera" xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller" xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface" xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor" xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <link name="camera_link">
+    <inertial>
+      <mass value="0.1"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia izz="1e-1"
+               ixx="1e-1"
+               iyy="1e-1"
+               ixy="0" iyz="0" ixz="0"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry name="arm_drop_geom">
+        <box size="0.08 0.02 0.02"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry name="arm_drop_col">
+        <box size="0.08 0.02 0.02"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <gazebo reference="camera_link" version="1.9">
+    <material>Gazebo/Purple</material>
+    <sensor type="camera" name="webcam">
+      <update_rate>30.0</update_rate>
+      <always_on>true</always_on>
+      <visualize>true</visualize>
+      <camera name="webcam">
+        <horizontal_fov>1.3962634</horizontal_fov>
+        <image>
+          <width>800</width>
+          <height>800</height>
+          <format>R8G8B8</format>
+        </image>
+        <clip>
+          <near>0.02</near>
+          <far>300</far>
+        </clip>
+        <noise>
+          <type>gaussian</type>
+          <!-- Noise is sampled independently per pixel on each frame.
+               That pixel's noise value is added to each of its color
+               channels, which at that point lie in the range [0,1]. -->
+          <mean>0.0</mean>
+          <stddev>0.007</stddev>
+        </noise>
+      </camera>
+      <plugin name="webcam1_plugin" filename="libgazebo_ros_camera.so">
+        <alwaysOn>true</alwaysOn>
+        <updateRate>0.0</updateRate>
+        <cameraName>dreamer_testbed/webcam</cameraName>
+        <imageTopicName>floating_image_raw</imageTopicName>
+        <cameraInfoTopicName>floating_camera_info</cameraInfoTopicName>
+        <frameName>camera_link</frameName>
+        <hackBaseline>0.07</hackBaseline>
+        <distortionK1>0.0</distortionK1>
+        <distortionK2>0.0</distortionK2>
+        <distortionK3>0.0</distortionK3>
+        <distortionT1>0.0</distortionT1>
+        <distortionT2>0.0</distortionT2>
+      </plugin>
+    </sensor>
+  </gazebo>
+
+  <gazebo version='1.2'>
+    <!-- The following plugin pins the robot to the world. -->
+    <!-- <plugin filename="libPinPlugin.so" name="PinPlugin_FloatingCamera">
+        <pin_root_link>1</pin_root_link>
+    </plugin> -->
+    <static>true</static>
+  </gazebo>
+</robot>

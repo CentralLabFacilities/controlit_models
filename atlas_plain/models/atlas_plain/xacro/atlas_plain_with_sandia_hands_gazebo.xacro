@@ -1,0 +1,27 @@
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="atlas" >
+
+    <!-- gazebo uses model:// for the model path. -->
+    <property name="modelPath" value="model://atlas_plain" />
+
+    <xacro:include filename="$(find atlas_plain)/models/atlas_plain/xacro/atlas_plain_with_sandia_hands.xacro" />
+
+    <gazebo>
+        <!-- include plugin for sandia hands -->
+        <!--
+        The source code for this plugin is at:
+        https://bitbucket.org/osrf/drcsim/src/7070d7a926eb930f0b9cd00534f38f2ecc99ced7/ros/atlas_msgs/SandiaHandPlugin.cpp
+        -->
+        <plugin name="sandia_hand_plugin" filename="libSandiaHandPlugin.so"/>
+
+        <!-- The following plugin provides ground truth odometry -->
+        <!-- <plugin filename="libgazebo_ros_p3d.so" name="pos_plugin_ros">
+            <alwaysOn>true</alwaysOn>
+            <updateRate>1000.0</updateRate>
+            <bodyName>pelvis</bodyName>
+            <topicName>/atlas_plain/pose</topicName>
+            <frameName>world</frameName>
+            <rpyOffset>0 0 0</rpyOffset>
+            <xyzOffset>0 0 0</xyzOffset>
+        </plugin> -->
+    </gazebo>
+</robot>

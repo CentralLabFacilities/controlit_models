@@ -1,0 +1,387 @@
+<?xml version="1.0"?>
+<robot xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor"
+       xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
+       xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface">
+
+    <!-- ensure that modelPath, MESH, TORSO are defined in aprent xacro -->
+    <macro name="testbed" params="PARENT stand_height arm_back arm_up arm_forward arm_drop *origin">
+
+      <joint name="testbed_base_offset" type="fixed">
+        <insert_block name="origin" />
+        <parent link="${PARENT}"/>
+        <child link="testbed_base"/>
+      </joint>
+
+      <link name="testbed_base">
+        <inertial>
+          <mass value="20" />
+            <origin xyz="0 0 0.025" />
+            <inertia ixx="5"  ixy="0"  ixz="0" iyy="5" iyz="0" izz="5" />
+        </inertial>
+        <visual>
+          <material name="GreyA" />
+          <origin xyz="0 0 0.025" rpy="0 0 0 " />
+          <geometry name="testbed_base_geom">
+            <box size="0.8 0.5 0.05"/>
+          </geometry>
+          <material name="grey">
+            <color rgba="0.627 0.627 0.627 1"/>
+          </material>
+        </visual>
+        <collision>
+          <origin xyz="0 0 0.025" rpy="0.0 0.0 0.0 " />
+          <geometry name="testbed_base_geom">
+            <box size="0.8 0.5 0.05"/>
+          </geometry>
+        </collision>
+      </link>
+
+      <joint name="base_to_stand" type="fixed">
+        <origin xyz="0.0 0 0.01" rpy="0 0 0"/>
+        <parent link="testbed_base"/>
+        <child link="testbed_stand"/>
+      </joint>
+
+      <link name="testbed_stand">
+        <inertial>
+          <mass value="20" />
+            <origin xyz="0 0 ${stand_height/3}" />
+            <inertia ixx="5"  ixy="0"  ixz="0" iyy="5" iyz="0" izz="5" />
+        </inertial>
+        <visual>
+          <material name="GreyA" />
+          <origin xyz="0 0 ${stand_height/2}" rpy="0 0 0 " />
+          <geometry name="testbed_base_geom">
+            <box size="0.25 0.25 ${stand_height}"/>
+          </geometry>
+          <material name="grey">
+            <color rgba="0.627 0.627 0.627 1"/>
+          </material>
+        </visual>
+        <collision>
+          <origin xyz="0 0 ${stand_height/2}" rpy="0.0 0.0 0.0 " />
+          <geometry name="testbed_base_geom">
+            <box size="0.25 0.25 ${stand_height}"/>
+          </geometry>
+        </collision>
+      </link>
+
+      <joint name="fixed0" type="fixed">
+        <origin xyz="-0.12 0 ${stand_height}" rpy="0 0 0"/>
+        <parent link="testbed_stand"/>
+        <child link="camera_arm0"/>
+      </joint>
+
+      <link name="camera_arm0">
+        <inertial>
+          <mass value="${arm_back * KgPerM}"/>
+          <origin xyz="${-arm_back / 2} 0 0" rpy="0 0 0"/>
+          <inertia ixx="${arm_back * KgPerM * SideLengthSquared / 6}"
+                   iyy="${arm_back * KgPerM * (SideLengthSquared + arm_back * arm_back) / 12}"
+                   izz="${arm_back * KgPerM * (SideLengthSquared + arm_back * arm_back) / 12}"
+                   ixy="0" iyz="0" ixz="0"/>
+        </inertial>
+        <visual>
+          <origin xyz="${-arm_back / 2} 0 0" rpy="0 0 0"/>
+          <geometry name="arm_back_geom">
+            <box size="${arm_back} 0.04 0.04"/>
+          </geometry>
+          <material name="grey">
+            <color rgba="0.627 0.627 0.627 1"/>
+          </material>
+        </visual>
+        <collision>
+          <origin xyz="${-arm_back / 2} 0 0" rpy="0 0 0"/>
+          <geometry name="arm_back_col">
+            <box size="${arm_back} 0.04 0.04"/>
+          </geometry>
+        </collision>
+      </link>
+
+      <joint name="fixed1" type="fixed">
+        <origin xyz="${-arm_back + 0.0381/2} 0 0" rpy="0 0 0"/>
+        <parent link="camera_arm0"/>
+        <child link="camera_arm1"/>
+      </joint>
+
+      <link name="camera_arm1">
+        <inertial>
+          <mass value="${arm_up * KgPerM}"/>
+          <origin xyz="0 0 ${arm_up / 2}" rpy="0 0 0"/>
+          <inertia izz="${arm_up * KgPerM * SideLengthSquared / 6}"
+                   ixx="${arm_up * KgPerM * (SideLengthSquared + arm_up * arm_up) / 12}"
+                   iyy="${arm_up * KgPerM * (SideLengthSquared + arm_up * arm_up) / 12}"
+                   ixy="0" iyz="0" ixz="0"/>
+        </inertial>
+        <visual>
+          <origin xyz="0 0 ${arm_up / 2}" rpy="0 0 0"/>
+          <geometry name="arm_up_geom">
+            <box size="0.04 0.04 ${arm_up} "/>
+          </geometry>
+          <material name="grey">
+            <color rgba="0.627 0.627 0.627 1"/>
+          </material>
+        </visual>
+        <collision>
+          <origin xyz="0 0 ${arm_up / 2}" rpy="0 0 0"/>
+          <geometry name="arm_up_col">
+            <box size="0.04 0.04 ${arm_up}"/>
+          </geometry>
+        </collision>
+      </link>
+
+      <joint name="fixed2" type="fixed">
+        <origin xyz="0 0 ${arm_up - 0.0381/2}" rpy="0 0 0"/>
+        <parent link="camera_arm1"/>
+        <child link="camera_arm2"/>
+      </joint>
+
+      <link name="camera_arm2">
+        <inertial>
+          <mass value="${arm_forward * KgPerM}"/>
+          <origin xyz="${arm_forward / 2} 0 0" rpy="0 0 0"/>
+          <inertia ixx="${arm_forward * KgPerM * SideLengthSquared / 6}"
+                   iyy="${arm_forward * KgPerM * (SideLengthSquared + arm_forward * arm_forward) / 12}"
+                   izz="${arm_forward * KgPerM * (SideLengthSquared + arm_forward * arm_forward) / 12}"
+                   ixy="0" iyz="0" ixz="0"/>
+        </inertial>
+        <visual>
+          <origin xyz="${arm_forward / 2} 0 0" rpy="0 0 0"/>
+          <geometry name="arm_forward_geom">
+            <box size="${arm_forward} 0.04 0.04 "/>
+          </geometry>
+          <material name="grey">
+            <color rgba="0.627 0.627 0.627 1"/>
+          </material>
+        </visual>
+        <collision>
+          <origin xyz="${arm_forward / 2} 0 0" rpy="0 0 0"/>
+          <geometry name="arm_forward_col">
+            <box size="${arm_forward} 0.04 0.04"/>
+          </geometry>
+        </collision>
+      </link>
+
+      <joint name="fixed3" type="fixed">
+        <origin xyz="${arm_forward - 0.0381/2} 0 0" rpy="0 0 0"/>
+        <parent link="camera_arm2"/>
+        <child link="camera_arm3"/>
+      </joint>
+
+      <link name="camera_arm3">
+        <inertial>
+          <mass value="${arm_drop * KgPerM}"/>
+          <origin xyz="0 0 ${-arm_drop / 2}" rpy="0 0 0"/>
+          <inertia izz="${arm_drop * KgPerM * SideLengthSquared / 6}"
+                   ixx="${arm_drop * KgPerM * (SideLengthSquared + arm_drop * arm_drop) / 12}"
+                   iyy="${arm_drop * KgPerM * (SideLengthSquared + arm_drop * arm_drop) / 12}"
+                   ixy="0" iyz="0" ixz="0"/>
+        </inertial>
+        <visual>
+          <origin xyz="0 0 ${-arm_drop / 2}" rpy="0 0 0"/>
+          <geometry name="arm_drop_geom">
+            <box size="0.04 0.04 ${arm_drop} "/>
+          </geometry>
+          <material name="grey">
+            <color rgba="0.627 0.627 0.627 1"/>
+          </material>
+        </visual>
+        <collision>
+          <origin xyz="0 0 ${-arm_drop / 2}" rpy="0 0 0"/>
+          <geometry name="arm_drop_col">
+            <box size="0.04 0.04 ${arm_drop}"/>
+          </geometry>
+        </collision>
+      </link>
+
+      <joint name="webcam1_mount_y" type="continuous">
+        <axis xyz="0 1 0"/>
+        <origin xyz="0 0.05 ${-arm_drop}" rpy="0.0 0 0"/>
+        <parent link="camera_arm3"/>
+        <child link="webcam1_virtual_link"/>
+      </joint>
+
+      <link name="webcam1_virtual_link">
+        <inertial>
+          <mass value="0.01"/>
+          <origin xyz="0 0.005 0" rpy="0 0 0"/>
+          <inertia izz="1e-6"
+                   ixx="1e-6"
+                   iyy="1e-6"
+                   ixy="0" iyz="0" ixz="0"/>
+        </inertial>
+      </link>
+
+      <joint name="webcam1_mount_x" type="continuous">
+        <axis xyz="0 0 1"/>
+        <origin xyz="0 0.005 0.0" rpy="0.0 0 0"/>
+        <parent link="webcam1_virtual_link"/>
+        <child link="camera_link1"/>
+      </joint>
+
+      <link name="camera_link1">
+        <inertial>
+          <mass value="0.01"/>
+          <origin xyz="0 0 0" rpy="0 0 0"/>
+          <inertia izz="1e-6"
+                   ixx="1e-6"
+                   iyy="1e-6"
+                   ixy="0" iyz="0" ixz="0"/>
+        </inertial>
+        <visual>
+          <origin xyz="0 0 0" rpy="0 0 0"/>
+          <geometry name="arm_drop_geom">
+            <box size="0.08 0.02 0.02"/>
+          </geometry>
+          <material name="grey">
+            <color rgba="0.627 0.627 0.627 1"/>
+          </material>
+        </visual>
+        <collision>
+          <origin xyz="0 0 0" rpy="0 0 0"/>
+          <geometry name="arm_drop_col">
+            <box size="0.08 0.02 0.02"/>
+          </geometry>
+        </collision>
+      </link>
+
+      <gazebo reference="camera_link1" version="1.9">
+        <material>Gazebo/Blue</material>
+        <sensor type="camera" name="webcam1">
+          <update_rate>30.0</update_rate>
+          <always_on>true</always_on>
+          <visualize>true</visualize>
+          <camera name="webcam1">
+            <horizontal_fov>1.3962634</horizontal_fov>
+            <image>
+              <width>800</width>
+              <height>800</height>
+              <format>R8G8B8</format>
+            </image>
+            <clip>
+              <near>0.02</near>
+              <far>300</far>
+            </clip>
+            <noise>
+              <type>gaussian</type>
+              <!-- Noise is sampled independently per pixel on each frame.
+                   That pixel's noise value is added to each of its color
+                   channels, which at that point lie in the range [0,1]. -->
+              <mean>0.0</mean>
+              <stddev>0.007</stddev>
+            </noise>
+          </camera>
+          <plugin name="webcam1_plugin" filename="libgazebo_ros_camera.so">
+            <alwaysOn>true</alwaysOn>
+            <updateRate>0.0</updateRate>
+            <cameraName>dreamer_testbed/webcam1</cameraName>
+            <imageTopicName>image_raw</imageTopicName>
+            <cameraInfoTopicName>camera_info</cameraInfoTopicName>
+            <frameName>camera_link</frameName>
+            <hackBaseline>0.07</hackBaseline>
+            <distortionK1>0.0</distortionK1>
+            <distortionK2>0.0</distortionK2>
+            <distortionK3>0.0</distortionK3>
+            <distortionT1>0.0</distortionT1>
+            <distortionT2>0.0</distortionT2>
+          </plugin>
+        </sensor>
+      </gazebo>
+
+      <joint name="webcam2_mount_y" type="continuous">
+        <axis xyz="0 1 0"/>
+        <origin xyz="0 -0.05 ${-arm_drop}" rpy="0.0 0.0 0.0"/> <!--TODO: make this parameter-->
+        <parent link="camera_arm3"/>
+        <child link="webcam2_virtual_link"/>
+      </joint>
+
+      <link name="webcam2_virtual_link">
+        <inertial>
+          <mass value="0.01"/>
+          <origin xyz="0 -0.005 0" rpy="0 0 0"/>
+          <inertia izz="1e-6"
+                   ixx="1e-6"
+                   iyy="1e-6"
+                   ixy="0" iyz="0" ixz="0"/>
+        </inertial>
+      </link>
+
+      <joint name="webcam2_mount_x" type="continuous">
+        <axis xyz="0 0 1"/>
+        <origin xyz="0 -0.005 0.0" rpy="0.0 0.0 0.0"/> <!--TODO: make this parameter-->
+        <parent link="webcam2_virtual_link"/>
+        <child link="camera_link2"/>
+      </joint>
+
+      <link name="camera_link2">
+        <inertial>
+          <mass value="0.01"/>
+          <origin xyz="0 0 0" rpy="0 0 0"/>
+          <inertia izz="1e-6"
+                   ixx="1e-6"
+                   iyy="1e-6"
+                   ixy="0" iyz="0" ixz="0"/>
+        </inertial>
+        <visual>
+          <origin xyz="0 0 0" rpy="0 0 0"/>
+          <geometry name="arm_drop_geom">
+            <box size="0.08 0.02 0.02"/>
+          </geometry>
+          <material name="grey">
+            <color rgba="0.627 0.627 0.627 1"/>
+          </material>
+        </visual>
+        <collision>
+          <origin xyz="0 0 0" rpy="0 0 0"/>
+          <geometry name="arm_drop_col">
+            <box size="0.08 0.02 0.02"/>
+          </geometry>
+        </collision>
+      </link>
+
+      <gazebo reference="camera_link2" version="1.9">
+        <material>Gazebo/Red</material>
+        <sensor type="camera" name="webcam2">
+          <update_rate>30.0</update_rate>
+          <always_on>true</always_on>
+          <visualize>true</visualize>
+          <camera name="webcam2">
+            <horizontal_fov>1.3962634</horizontal_fov>
+            <image>
+              <width>800</width>
+              <height>800</height>
+              <format>R8G8B8</format>
+            </image>
+            <clip>
+              <near>0.02</near>
+              <far>300</far>
+            </clip>
+            <noise>
+              <type>gaussian</type>
+              <!-- Noise is sampled independently per pixel on each frame.
+                   That pixel's noise value is added to each of its color
+                   channels, which at that point lie in the range [0,1]. -->
+              <mean>0.0</mean>
+              <stddev>0.007</stddev>
+            </noise>
+          </camera>
+          <plugin name="webcam2_plugin" filename="libgazebo_ros_camera.so">
+            <alwaysOn>true</alwaysOn>
+            <updateRate>0.0</updateRate>
+            <cameraName>dreamer_testbed/webcam2</cameraName>
+            <imageTopicName>image_raw</imageTopicName>
+            <cameraInfoTopicName>camera_info</cameraInfoTopicName>
+            <frameName>camera_link</frameName>
+            <hackBaseline>0.07</hackBaseline>
+            <distortionK1>0.0</distortionK1>
+            <distortionK2>0.0</distortionK2>
+            <distortionK3>0.0</distortionK3>
+            <distortionT1>0.0</distortionT1>
+            <distortionT2>0.0</distortionT2>
+          </plugin>
+        </sensor>
+      </gazebo>
+
+  </macro>
+
+</robot>
