@@ -2,4 +2,4 @@
 
 ## Introduction ##
 
-This is repository contains a collection of robot models that could be used with ControlIt!. For more details on usage instructions, see: https://github.com/liangfok/controlit
+This repository contains a collection of robot models that could be used with ControlIt!. For more details on usage instructions, see: https://github.com/liangfok/controlit
