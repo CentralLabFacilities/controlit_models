@@ -1,8 +1,0 @@
-<?xml version="1.0" ?>
-<launch>
-	<!--
-		The pinned version of this robot is identical to the non-pinned version.
-		Thus, visualize the non-pinned version.
-	-->
-    <include file="$(find atlas_plain)/launch/rviz.launch"/>
-</launch>

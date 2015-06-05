@@ -33,9 +33,6 @@
     <buildtool_depend>catkin</buildtool_depend>
 
     <depend>roscpp</depend>
-
-    <!-- for the PinPlugin -->
-    <depend>hcrl_simulator</depend>
     <depend>dreamer</depend>
 </package>
 

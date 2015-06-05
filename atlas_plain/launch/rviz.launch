@@ -1,8 +1,0 @@
-<?xml version="1.0" ?>
-<launch>
-    <!-- Load the robot description parameter-->
-    <param name="robot_description"
-        command="$(find xacro)/xacro.py '$(find atlas_plain)/models/atlas_plain/xacro/atlas_plain_with_sandia_hands_linked_to_world.xacro'" />
-
-    <include file="$(find hcrl_simulator)/launch/rviz.xml"/>
-</launch>

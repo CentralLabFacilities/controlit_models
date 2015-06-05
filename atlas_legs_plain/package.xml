@@ -5,7 +5,7 @@
     <version>0.0.0</version>
 
     <description>
-        Contains files related to the "atlas legs plain" robot.
+        Contains the "atlas_legs_plain" robot model.
     </description>
     
     <maintainer email="liangfok@utexas.edu">Chien-Liang Fok</maintainer>
@@ -30,10 +30,6 @@
     <!-- Use test_depend for packages you need only for testing: -->
     <!--   <test_depend>gtest</test_depend> -->
     <buildtool_depend>catkin</buildtool_depend>
-      
-    <!-- Uses the gazebo plugin in hcrl_simulator -->
-    <depend>hcrl_simulator</depend>
-    
     <!-- <depend package="atlas_description"/> -->
 </package>
 

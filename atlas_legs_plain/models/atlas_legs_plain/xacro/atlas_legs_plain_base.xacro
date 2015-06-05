@@ -376,55 +376,5 @@
             <limit effort="220" velocity="12" lower="0" upper="2.38569" />
             <safety_controller k_position="100" k_velocity="100" soft_lower_limit="-10" soft_upper_limit="12.3857" />
         </joint>
-
-        <gazebo reference="l_leg_akx">
-            <provideFeedback value="true"/>
-        </gazebo>
-        <gazebo reference="l_leg_aky">
-            <provideFeedback value="true"/>
-        </gazebo>
-        <gazebo reference="l_leg_hpx">
-            <provideFeedback value="true"/>
-        </gazebo>
-        <gazebo reference="l_leg_hpy">
-            <provideFeedback value="true"/>
-        </gazebo>
-        <gazebo reference="l_leg_hpz">
-            <provideFeedback value="true"/>
-        </gazebo>
-        <gazebo reference="l_leg_kny">
-            <provideFeedback value="true"/>
-        </gazebo>
-        <gazebo reference="r_leg_akx">
-            <provideFeedback value="true"/>
-        </gazebo>
-        <gazebo reference="r_leg_aky">
-            <provideFeedback value="true"/>
-        </gazebo>
-        <gazebo reference="r_leg_hpx">
-            <provideFeedback value="true"/>
-        </gazebo>
-        <gazebo reference="r_leg_hpy">
-            <provideFeedback value="true"/>
-        </gazebo>
-        <gazebo reference="r_leg_hpz">
-            <provideFeedback value="true"/>
-        </gazebo>
-        <gazebo reference="r_leg_kny">
-            <provideFeedback value="true"/>
-        </gazebo>
-
-        <gazebo version="1.2">
-            <!-- The following plugin provides ground truth odometry -->
-            <!-- <plugin filename="libgazebo_ros_p3d.so" name="pos_plugin_ros">
-                <alwaysOn>true</alwaysOn>
-                <updateRate>1000.0</updateRate>
-                <bodyName>pelvis</bodyName>
-                <topicName>/atlas_legs_plain/pose</topicName>
-                <frameName>world</frameName>
-                <rpyOffset>0 0 0</rpyOffset>
-                <xyzOffset>0 0 0</xyzOffset>
-            </plugin> -->
-        </gazebo>
     </macro>
 </robot>

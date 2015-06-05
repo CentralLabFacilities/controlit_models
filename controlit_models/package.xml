@@ -40,7 +40,6 @@
     <exec_depend>dreamer</exec_depend>
     <exec_depend>dreamer_hand</exec_depend>
     <exec_depend>dreamer_testbed</exec_depend>
-    <exec_depend>hcrl_simulator</exec_depend>
     <exec_depend>hume</exec_depend>
     <exec_depend>omni_wheel</exec_depend>
     <exec_depend>stickbot_bipedal_12dof</exec_depend>
