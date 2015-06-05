@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
 <robot xmlns:xacro="http://ros.org/wiki/xacro" name="stickbot_upperbody_10dof">
 
-  <xacro:include filename="$(find hcrl_simulator)/models/generic_models.xml" />
+  <xacro:include filename="$(find controlit_models_common)/models/generic_models.xml" />
 
   <macro name="stickbot_upperbody_10dof">
     <link name="base_plate">
@@ -346,7 +346,7 @@
         </geometry>
       </collision>
     </link>
-
+<!-- 
     <gazebo reference="waist_rotator">
       <provideFeedback value="true"/>
     </gazebo>
@@ -382,6 +382,6 @@
       <plugin filename="libPinPlugin.so" name="PinPlugin">
         <pin_root_link>1</pin_root_link>
       </plugin>
-    </gazebo>
+    </gazebo> -->
   </macro>
 </robot>
