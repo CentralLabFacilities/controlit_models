@@ -7,7 +7,7 @@ project(dreamer)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS roscpp)
 
-find_package(gazebo REQUIRED)
+# find_package(gazebo REQUIRED)
 
 ###################################
 ## catkin specific configuration ##
@@ -54,37 +54,37 @@ catkin_package(
 # message(STATUS ${GAZEBO_LIBRARY_DIRS})
 
 include_directories(
-    ${GAZEBO_INCLUDE_DIRS}
+    # ${GAZEBO_INCLUDE_DIRS}
     ${catkin_INCLUDE_DIRS}
 )
 
-if(CMAKE_COMPILER_IS_GNUCXX)
-    set(CMAKE_CXX_FLAGS "-std=c++0x ${CMAKE_CXX_FLAGS}")
-endif()
+# if(CMAKE_COMPILER_IS_GNUCXX)
+#     set(CMAKE_CXX_FLAGS "-std=c++0x ${CMAKE_CXX_FLAGS}")
+# endif()
 
 # include_directories(${GAZEBO_INCLUDE_DIRS})
 # link_directories(${GAZEBO_LIBRARY_DIRS})
 
-add_library(dreamer_slave_joint_plugin 
-    gazebo_plugins/src/dreamer_slave_joint_plugin.cpp
-)
+# add_library(dreamer_slave_joint_plugin 
+#     gazebo_plugins/src/dreamer_slave_joint_plugin.cpp
+# )
 
-target_link_libraries(dreamer_slave_joint_plugin 
-    ${GAZEBO_LIBRARIES}
-)
+# target_link_libraries(dreamer_slave_joint_plugin 
+#     ${GAZEBO_LIBRARIES}
+# )
 
-add_library(dreamer_eye_plugin 
-    gazebo_plugins/src/dreamer_eye_plugin.cpp
-)
+# add_library(dreamer_eye_plugin 
+#     gazebo_plugins/src/dreamer_eye_plugin.cpp
+# )
 
-target_link_libraries(dreamer_eye_plugin 
-    ${GAZEBO_LIBRARIES}
-)
+# target_link_libraries(dreamer_eye_plugin 
+#     ${GAZEBO_LIBRARIES}
+# )
 
-add_library(dreamer_pr2_gripper_plugin
-    gazebo_plugins/src/dreamer_pr2_gripper_plugin.cpp
-)
+# add_library(dreamer_pr2_gripper_plugin
+#     gazebo_plugins/src/dreamer_pr2_gripper_plugin.cpp
+# )
 
-target_link_libraries(dreamer_pr2_gripper_plugin 
-    ${GAZEBO_LIBRARIES}
-)
+# target_link_libraries(dreamer_pr2_gripper_plugin 
+#     ${GAZEBO_LIBRARIES}
+# )

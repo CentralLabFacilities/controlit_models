@@ -7,7 +7,7 @@ project(dreamer_hand)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS roscpp)
 
-find_package(gazebo REQUIRED)
+# find_package(gazebo REQUIRED)
 
 ###################################
 ## catkin specific configuration ##
@@ -60,13 +60,13 @@ endif()
 # message(STATUS ${GAZEBO_LIBRARY_DIRS})
 
 include_directories(
-    ${GAZEBO_INCLUDE_DIRS}
+    # ${GAZEBO_INCLUDE_DIRS}
     ${catkin_INCLUDE_DIRS}
 )
 
 # include_directories(${GAZEBO_INCLUDE_DIRS})
 # link_directories(${GAZEBO_LIBRARY_DIRS})
 
-add_library(dreamer_hand_poscom_plugin 
-    gazebo_plugins/src/dreamer_hand_poscom_plugin.cpp
-)
+# add_library(dreamer_hand_poscom_plugin 
+#     gazebo_plugins/src/dreamer_hand_poscom_plugin.cpp
+# )
