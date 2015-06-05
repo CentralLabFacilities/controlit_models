@@ -1,8 +1,0 @@
-<?xml version="1.0" ?>
-<launch>
-    <!-- Enable simulation time -->
-    <param name="/use_sim_time" type="bool" value="true"/>
-
-    <!-- Start gazebo with the robot. -->
-    <node args="$(find valkyrie)/worlds/valkyrie.world" name="gazebo" pkg="hcrl_simulator" type="run_gazebo"/>
-</launch>
