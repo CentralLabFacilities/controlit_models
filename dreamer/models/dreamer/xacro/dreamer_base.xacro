@@ -14,7 +14,7 @@
 
     <property name="MESH_COLL" value="low_res" />
     
-    <xacro:include filename="$(find hcrl_simulator)/models/generic_models.xml" />
+    <xacro:include filename="$(find controlit_models_common)/models/generic_models.xml" />
 
     <!--Torso-->
     <xacro:include filename="$(find dreamer)/models/dreamer/xacro/dreamer_torso.xacro"/>
@@ -80,7 +80,7 @@
     -->
     
     <!-- Torso joints -->
-    <gazebo reference="torso_yaw">
+    <!-- <gazebo reference="torso_yaw">
       <provideFeedback value="true"/>
     </gazebo>
     <gazebo reference="torso_lower_pitch">
@@ -88,10 +88,10 @@
     </gazebo>
     <gazebo reference="torso_upper_pitch">
       <provideFeedback value="true"/>
-    </gazebo>
+    </gazebo> -->
     
     <!-- right arm joints -->
-    <gazebo reference="right_shoulder_extensor">
+    <!-- <gazebo reference="right_shoulder_extensor">
       <provideFeedback value="true"/>
     </gazebo>
     <gazebo reference="right_shoulder_abductor">
@@ -111,10 +111,10 @@
     </gazebo>
     <gazebo reference="right_wrist_yaw">
       <provideFeedback value="true"/>
-    </gazebo>
+    </gazebo> -->
     
     <!-- Left arm joints -->
-    <gazebo reference="left_shoulder_extensor">
+    <!-- <gazebo reference="left_shoulder_extensor">
       <provideFeedback value="true"/>
     </gazebo>
     <gazebo reference="left_shoulder_abductor">
@@ -134,10 +134,10 @@
     </gazebo>
     <gazebo reference="left_wrist_yaw">
       <provideFeedback value="true"/>
-    </gazebo>
+    </gazebo> -->
     
     <!-- Head and neck joints -->
-    <gazebo reference="lower_neck_pitch">
+    <!-- <gazebo reference="lower_neck_pitch">
       <provideFeedback value="true"/>
     </gazebo>
     <gazebo reference="upper_neck_yaw">
@@ -157,10 +157,10 @@
     </gazebo>
     <gazebo reference="left_eye_yaw">
       <provideFeedback value="true"/>
-    </gazebo>
+    </gazebo> -->
     
     <!-- Right hand joints -->
-    <gazebo reference="right_thumb_1">
+    <!-- <gazebo reference="right_thumb_1">
       <provideFeedback value="true"/>
     </gazebo>
     <gazebo reference="right_thumb_2">
@@ -195,10 +195,10 @@
     </gazebo>
     <gazebo reference="right_pinky_3">
       <provideFeedback value="true"/>
-    </gazebo>
+    </gazebo> -->
     
     <!-- Left gripper joints -->
-    <gazebo reference="l_gripper_l_finger_joint">
+    <!-- <gazebo reference="l_gripper_l_finger_joint">
       <provideFeedback value="true"/>
     </gazebo>
     <gazebo reference="l_gripper_l_finger_tip_joint">
@@ -209,5 +209,5 @@
     </gazebo>
     <gazebo reference="l_gripper_r_finger_tip_joint">
       <provideFeedback value="true"/>
-    </gazebo>
+    </gazebo> -->
 </robot>

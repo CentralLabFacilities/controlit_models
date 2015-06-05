@@ -9,36 +9,5 @@
   <property name="modelPath" value="model://dreamer" />
 
   <xacro:include filename="$(find dreamer_testbed)/models/dreamer_testbed/xacro/dreamer_testbed_base.xacro" />
-
-  <gazebo version='1.2'>
-    <!-- The following plugin pins the robot to the world. -->
-    <plugin filename="libPinPlugin.so" name="PinPlugin">
-        <pin_root_link>1</pin_root_link>
-    </plugin>
-
-    <!-- The following plugin provides ground-truth odometry -->
-    <!-- <plugin filename="libgazebo_ros_p3d.so" name="pos_plugin_ros">
-      <alwaysOn>true</alwaysOn>
-      <updateRate>1000.0</updateRate>
-      <bodyName>panplate</bodyName>
-      <topicName>/dreamer_no_left_arm/pose</topicName>
-      <frameName>world</frameName>
-      <rpyOffset>0 0 0</rpyOffset>
-      <xyzOffset>0 0 1.0</xyzOffset>
-    </plugin> -->
-
-    <!-- The following plugin enables the hands to be controlled. -->
-    <plugin filename="libdreamer_hand_poscom_plugin.so" name="RightHandPosComPlugin"/>
-
-    <!-- The following plugin enables the cameras to be controlled. -->
-    <plugin filename="libdreamer_testbed_plugin.so" name="TestbedCameraControlPlugin"/>
-
-    <!-- The following plugin mimics the internal transmission. -->
-    <plugin filename="libdreamer_slave_joint_plugin.so" name="DreamerSlaveJointPlugin"/>
-
-    <!-- The following plugin controls the eyes. -->
-    <plugin filename="libdreamer_eye_plugin.so" name="DreamerEyePlugin"/>
-  </gazebo>
-
 </robot>
 

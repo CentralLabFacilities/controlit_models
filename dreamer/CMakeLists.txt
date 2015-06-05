@@ -66,7 +66,7 @@ endif()
 # link_directories(${GAZEBO_LIBRARY_DIRS})
 
 add_library(dreamer_slave_joint_plugin 
-	gazebo_plugins/src/dreamer_slave_joint_plugin.cpp
+    gazebo_plugins/src/dreamer_slave_joint_plugin.cpp
 )
 
 target_link_libraries(dreamer_slave_joint_plugin 
@@ -74,7 +74,7 @@ target_link_libraries(dreamer_slave_joint_plugin
 )
 
 add_library(dreamer_eye_plugin 
-	gazebo_plugins/src/dreamer_eye_plugin.cpp
+    gazebo_plugins/src/dreamer_eye_plugin.cpp
 )
 
 target_link_libraries(dreamer_eye_plugin 
@@ -82,7 +82,7 @@ target_link_libraries(dreamer_eye_plugin
 )
 
 add_library(dreamer_pr2_gripper_plugin
-	gazebo_plugins/src/dreamer_pr2_gripper_plugin.cpp
+    gazebo_plugins/src/dreamer_pr2_gripper_plugin.cpp
 )
 
 target_link_libraries(dreamer_pr2_gripper_plugin 

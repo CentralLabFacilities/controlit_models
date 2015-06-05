@@ -5,21 +5,11 @@
   <!-- <property name="HAND_JOINT_TYPE" value="revolute" /> -->
 
   <!-- For debugging purposes, fix the hand joints -->
-  <property name="HAND_JOINT_TYPE" value="revolute" />
+  <property name="RIGHT_HAND_JOINT_TYPE" value="revolute" />
 
   <!-- Gazebo uses model:// for the model path. -->
   <property name="modelPath" value="model://dreamer" />
 
   <xacro:include filename="$(find dreamer_hand)/models/dreamer_hand/xacro/dreamer_hand_base.xacro" />
-
-  <gazebo version='1.2'>
-      <!-- The following plugin pins the robot to the world. -->
-      <plugin filename="libPinPlugin.so" name="PinPlugin">
-          <pin_root_link>1</pin_root_link>
-      </plugin>
-
-      <plugin filename="libdreamer_hand_poscom_plugin.so" name="RightHandPosComPlugin"/>
-  </gazebo>
-
 </robot>
 

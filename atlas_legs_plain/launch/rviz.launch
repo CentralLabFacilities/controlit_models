@@ -1,0 +1,8 @@
+<?xml version="1.0" ?>
+<launch>
+    <!-- Load the robot description parameter-->
+    <param name="robot_description"
+        command="$(find xacro)/xacro.py '$(find atlas_legs_plain)/models/atlas_legs_plain/xacro/atlas_legs_plain_linked_to_world.xacro'" />
+
+    <include file="$(find controlit_models_common)/launch/rviz.xml"/>
+</launch>

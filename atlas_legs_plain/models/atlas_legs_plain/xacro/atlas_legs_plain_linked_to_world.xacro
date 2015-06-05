@@ -16,7 +16,7 @@
     </link>
 
     <joint name="pelvisOffset" type="fixed">
-        <origin rpy="0 0 0" xyz="0 0 0"/>
+        <origin rpy="0 0 0" xyz="0 0 0.925"/>
         <axis xyz="0 0 1"/>
         <parent link="world"/>
         <child link="pelvis"/>

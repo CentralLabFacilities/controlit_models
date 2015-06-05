@@ -7,7 +7,7 @@ project(dreamer_testbed)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS roscpp)
 
-find_package(gazebo REQUIRED)
+# find_package(gazebo REQUIRED)
 
 ###################################
 ## catkin specific configuration ##
@@ -58,20 +58,20 @@ catkin_package(
 # link_directories(${GAZEBO_LIBRARY_DIRS})
 
 include_directories(
-    ${GAZEBO_INCLUDE_DIRS}
+    # ${GAZEBO_INCLUDE_DIRS}
     ${catkin_INCLUDE_DIRS}
 )
 
 # link_directories(${GAZEBO_LIBRARY_DIRS})
 
-if(CMAKE_COMPILER_IS_GNUCXX)
-    set(CMAKE_CXX_FLAGS "-std=c++0x ${CMAKE_CXX_FLAGS}")
-endif()
+# if(CMAKE_COMPILER_IS_GNUCXX)
+#     set(CMAKE_CXX_FLAGS "-std=c++0x ${CMAKE_CXX_FLAGS}")
+# endif()
 
-add_library(dreamer_testbed_plugin 
-	gazebo_plugins/src/dreamer_testbed_plugin.cpp
-)
+# add_library(dreamer_testbed_plugin 
+# 	gazebo_plugins/src/dreamer_testbed_plugin.cpp
+# )
 
-target_link_libraries(dreamer_testbed_plugin 
-    ${GAZEBO_LIBRARIES}
-)
+# target_link_libraries(dreamer_testbed_plugin 
+#     ${GAZEBO_LIBRARIES}
+# )

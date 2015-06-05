@@ -5,7 +5,7 @@
   <!-- <property name="HAND_JOINT_TYPE" value="revolute" /> -->
 
   <!-- For debugging purposes, fix the hand joints -->
-  <property name="HAND_JOINT_TYPE" value="revolute" />
+  <!-- <property name="HAND_JOINT_TYPE" value="revolute" /> -->
 
   <!-- Gazebo uses model:// for the model path. -->
   <property name="modelPath" value="package://dreamer/models/dreamer" />
@@ -22,7 +22,7 @@
   </link>
 
   <joint name="baseOffset" type="fixed">
-    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <origin rpy="0 0 0" xyz="0 0 0.5"/>
     <axis xyz="0 0 1"/>
     <parent link="world"/>
     <child link="dreamer_hand_base"/>
