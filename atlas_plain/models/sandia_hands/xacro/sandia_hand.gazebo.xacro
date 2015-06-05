@@ -13,6 +13,7 @@
       <minDepth>0.00</minDepth>
       <maxContacts>1</maxContacts>
       <material>Gazebo/FlatBlack</material>
+      <provideFeedback value="true"/>
     </gazebo>
     <gazebo reference="${side}_f${idx}_0">
       <mu1>1.1</mu1>
@@ -23,6 +24,7 @@
       <minDepth>0.00</minDepth>
       <maxContacts>1</maxContacts>
       <material>Gazebo/FlatBlack</material>
+      <provideFeedback value="true"/>
     </gazebo>
     <gazebo reference="${side}_f${idx}_1">
       <mu1>1.1</mu1>
@@ -33,6 +35,7 @@
       <minDepth>0.00</minDepth>
       <maxContacts>1</maxContacts>
       <material>Gazebo/FlatBlack</material>
+      <provideFeedback value="true"/>
     </gazebo>
     <gazebo reference="${side}_f${idx}_2">
       <mu1>1.1</mu1>
@@ -43,19 +46,24 @@
       <minDepth>0.00</minDepth>
       <maxContacts>1</maxContacts>
       <material>Gazebo/FlatBlack</material>
+      <provideFeedback value="true"/>
     </gazebo>
     <gazebo reference="${side}_f${idx}_j0">
       <implicitSpringDamper>1</implicitSpringDamper>
+      <provideFeedback value="true"/>
     </gazebo>
     <gazebo reference="${side}_f${idx}_j1">
       <implicitSpringDamper>1</implicitSpringDamper>
+      <provideFeedback value="true"/>
     </gazebo>
     <gazebo reference="${side}_f${idx}_j2">
       <implicitSpringDamper>1</implicitSpringDamper>
+      <provideFeedback value="true"/>
     </gazebo>
   </xacro:macro>
   <xacro:macro name="sandia_hand_gazebo" params="side">
     <gazebo reference="${side}_palm">
+      <provideFeedback value="true"/>
       <mu1>1.1</mu1>
       <mu2>1.1</mu2>
       <kp>1000000.0</kp>
