@@ -1,0 +1,9 @@
+<?xml version="1.0" ?>
+<launch>
+    <!-- Load the robot description parameter-->
+    <param name="robot_description"
+        command="$(find xacro)/xacro.py '$(find stickbot_lowerleg_3dof)/models/stickbot_lowerleg_3dof/xacro/stickbot_lowerleg_3dof_linked_to_world.xacro'" />
+
+    <!-- Start the joint state publisher, robot state publisher, and RViz -->
+    <include file="$(find controlit_models_common)/launch/rviz.xml"/>
+</launch>
