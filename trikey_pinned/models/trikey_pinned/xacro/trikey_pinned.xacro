@@ -5,7 +5,7 @@
     <xacro:include filename="$(find omni_wheel)/models/omni_wheel/xacro/omni_wheel.xacro"/>
 
     <!-- ===== DUMMY 'BASE' LINK ==== -->
-<!--     <xacro:include filename="$(find hcrl_simulator)/models/generic_models.xml" />
+<!--     <xacro:include filename="$(find controlit_models_common)/models/generic_models.xml" />
     <xacro:virtual_link name="trikey_pinned_base"
                       origin_xyz="0 0 0"
                       origin_rpy="0 0 0" />
