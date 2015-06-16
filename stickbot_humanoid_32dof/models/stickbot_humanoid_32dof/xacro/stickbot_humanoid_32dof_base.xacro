@@ -6,7 +6,7 @@
   <macro name="stickbot_humanoid_32dof">
     <link name="pelvis">
       <inertial>
-        <mass value="3"/>
+        <mass value="2"/>
         <origin xyz="0.0 0.0 0.05"/>
         <inertia ixx="0.008667" ixy="0" ixz="0" iyy="0.008667" iyz="0" izz="0.01667"/>
       </inertial>
@@ -40,7 +40,7 @@
 
     <link name="leftHipLink1">
       <inertial>
-        <mass value="3.0"/>
+        <mass value="2.0"/>
         <origin xyz="0.0 0.0 -0.015"/>
         <inertia ixx="0.00015" ixy="0" ixz="0" iyy="0.00015" iyz="0" izz="0.000225"/>
       </inertial>
@@ -73,7 +73,7 @@
 
     <link name="leftHipExtensorLink">
       <inertial>
-        <mass value="3.0"/>
+        <mass value="2.0"/>
         <origin xyz="0.0 0.0 -0.015"/>
         <inertia ixx="0.00015" ixy="0" ixz="0" iyy="0.00015" iyz="0" izz="0.000225"/>
       </inertial>
@@ -239,7 +239,7 @@
 
     <link name="rightHipLink1">
       <inertial>
-        <mass value="3.0"/>
+        <mass value="2.0"/>
         <origin xyz="0.0 0.0 -0.015"/>
         <inertia ixx="0.00015" ixy="0" ixz="0" iyy="0.00015" iyz="0" izz="0.000225"/>
       </inertial>
@@ -272,7 +272,7 @@
 
     <link name="rightHipExtensorLink">
       <inertial>
-        <mass value="3.0"/>
+        <mass value="2.0"/>
         <origin xyz="0.0 0.0 -0.015"/>
         <inertia ixx="0.00015" ixy="0" ixz="0" iyy="0.00015" iyz="0" izz="0.000225"/>
       </inertial>
@@ -437,7 +437,7 @@
 
     <link name="abdomen">
       <inertial>
-        <mass value="1.5"/>
+        <mass value="1.0"/>
         <origin xyz="0.0 0.0 0.125"/>
         <inertia ixx="0.028125" ixy="0" ixz="0" iyy="0.045" iyz="0" izz="0.028125"/>
       </inertial>
@@ -470,7 +470,7 @@
 
     <link name="torso">
       <inertial>
-        <mass value="3"/>
+        <mass value="2"/>
         <origin xyz="0.0 0.0 0.125"/>
         <inertia ixx="0.028125" ixy="0" ixz="0" iyy="0.045" iyz="0" izz="0.028125"/>
       </inertial>
@@ -503,7 +503,7 @@
 
     <link name="chest">
       <inertial>
-        <mass value="3"/>
+        <mass value="2"/>
         <origin xyz="0.0 0.0 0.125"/>
         <inertia ixx="0.028125" ixy="0" ixz="0" iyy="0.045" iyz="0" izz="0.028125"/>
       </inertial>
@@ -536,7 +536,7 @@
 
     <link name="right_shoulder_extensor">
       <inertial>
-        <mass value="3"/>
+        <mass value="1"/>
         <origin xyz="0.0 -0.01 0.0"/>
         <inertia ixx="0.028125" ixy="0" ixz="0" iyy="0.045" iyz="0" izz="0.028125"/>
       </inertial>
@@ -569,7 +569,7 @@
 
     <link name="right_shoulder_adductor">
       <inertial>
-        <mass value="3"/>
+        <mass value="1"/>
         <origin xyz="0.0 -0.02 0.0"/>
         <inertia ixx="0.028125" ixy="0" ixz="0" iyy="0.045" iyz="0" izz="0.028125"/>
       </inertial>
@@ -602,7 +602,7 @@
 
     <link name="right_shoulder_rotator">
       <inertial>
-        <mass value="3"/>
+        <mass value="2"/>
         <origin xyz="0.0 0.0 -0.1"/>
         <inertia ixx="0.028125" ixy="0" ixz="0" iyy="0.045" iyz="0" izz="0.028125"/>
       </inertial>
@@ -635,7 +635,7 @@
 
     <link name="right_elbow_extensor">
       <inertial>
-        <mass value="3"/>
+        <mass value="2"/>
         <origin xyz="0.0 0.0 -0.1"/>
         <inertia ixx="0.028125" ixy="0" ixz="0" iyy="0.045" iyz="0" izz="0.028125"/>
       </inertial>
@@ -668,7 +668,7 @@
 
     <link name="right_wrist_rotator">
       <inertial>
-        <mass value="3"/>
+        <mass value="2"/>
         <origin xyz="0.0 0.0 -0.02"/>
         <inertia ixx="0.028125" ixy="0" ixz="0" iyy="0.045" iyz="0" izz="0.028125"/>
       </inertial>
@@ -701,7 +701,7 @@
 
     <link name="right_wrist_extensor">
       <inertial>
-        <mass value="3"/>
+        <mass value="1"/>
         <origin xyz="0.0 0.0 -0.02"/>
         <inertia ixx="0.028125" ixy="0" ixz="0" iyy="0.045" iyz="0" izz="0.028125"/>
       </inertial>
@@ -734,7 +734,7 @@
 
     <link name="right_wrist_adductor">
       <inertial>
-        <mass value="3"/>
+        <mass value="1"/>
         <origin xyz="0.0 0.0 -0.06"/>
         <inertia ixx="0.028125" ixy="0" ixz="0" iyy="0.045" iyz="0" izz="0.028125"/>
       </inertial>
@@ -767,7 +767,7 @@
 
     <link name="left_shoulder_extensor">
       <inertial>
-        <mass value="3"/>
+        <mass value="1"/>
         <origin xyz="0.0 0.01 0.0"/>
         <inertia ixx="0.028125" ixy="0" ixz="0" iyy="0.045" iyz="0" izz="0.028125"/>
       </inertial>
@@ -800,7 +800,7 @@
 
     <link name="left_shoulder_adductor">
       <inertial>
-        <mass value="3"/>
+        <mass value="1"/>
         <origin xyz="0.0 0.02 0.0"/>
         <inertia ixx="0.028125" ixy="0" ixz="0" iyy="0.045" iyz="0" izz="0.028125"/>
       </inertial>
@@ -833,7 +833,7 @@
 
     <link name="left_shoulder_rotator">
       <inertial>
-        <mass value="3"/>
+        <mass value="2"/>
         <origin xyz="0.0 0.0 -0.1"/>
         <inertia ixx="0.028125" ixy="0" ixz="0" iyy="0.045" iyz="0" izz="0.028125"/>
       </inertial>
@@ -866,7 +866,7 @@
 
     <link name="left_elbow_extensor">
       <inertial>
-        <mass value="3"/>
+        <mass value="2"/>
         <origin xyz="0.0 0.0 -0.1"/>
         <inertia ixx="0.028125" ixy="0" ixz="0" iyy="0.045" iyz="0" izz="0.028125"/>
       </inertial>
@@ -899,7 +899,7 @@
 
     <link name="left_wrist_rotator">
       <inertial>
-        <mass value="3"/>
+        <mass value="2"/>
         <origin xyz="0.0 0.0 -0.02"/>
         <inertia ixx="0.028125" ixy="0" ixz="0" iyy="0.045" iyz="0" izz="0.028125"/>
       </inertial>
@@ -932,7 +932,7 @@
 
     <link name="left_wrist_extensor">
       <inertial>
-        <mass value="3"/>
+        <mass value="1"/>
         <origin xyz="0.0 0.0 -0.02"/>
         <inertia ixx="0.028125" ixy="0" ixz="0" iyy="0.045" iyz="0" izz="0.028125"/>
       </inertial>
@@ -965,7 +965,7 @@
 
     <link name="left_wrist_adductor">
       <inertial>
-        <mass value="3"/>
+        <mass value="1"/>
         <origin xyz="0.0 0.0 -0.06"/>
         <inertia ixx="0.028125" ixy="0" ixz="0" iyy="0.045" iyz="0" izz="0.028125"/>
       </inertial>
@@ -998,7 +998,7 @@
 
     <link name="neck_rotator">
       <inertial>
-        <mass value="3"/>
+        <mass value="0.5"/>
         <origin xyz="0.0 0.0 0.01"/>
         <inertia ixx="0.0028125" ixy="0" ixz="0" iyy="0.0045" iyz="0" izz="0.0028125"/>
       </inertial>
@@ -1031,7 +1031,7 @@
 
     <link name="neck_extensor">
       <inertial>
-        <mass value="3"/>
+        <mass value="0.5"/>
         <origin xyz="0.0 0.0 0.01"/>
         <inertia ixx="0.0028125" ixy="0" ixz="0" iyy="0.0045" iyz="0" izz="0.0028125"/>
       </inertial>
@@ -1065,7 +1065,7 @@
 
     <link name="neck_adductor">
       <inertial>
-        <mass value="3"/>
+        <mass value="0.5"/>
         <origin xyz="0.0 0.0 0.01"/>
         <inertia ixx="0.0028125" ixy="0" ixz="0" iyy="0.0045" iyz="0" izz="0.0028125"/>
       </inertial>
@@ -1098,7 +1098,7 @@
 
     <link name="head">
       <inertial>
-        <mass value="3"/>
+        <mass value="2"/>
         <origin xyz="0.0 0.0 0.11"/>
         <inertia ixx="0.0028125" ixy="0" ixz="0" iyy="0.0045" iyz="0" izz="0.0028125"/>
       </inertial>
