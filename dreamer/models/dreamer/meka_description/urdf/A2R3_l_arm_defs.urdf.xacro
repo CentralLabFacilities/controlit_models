@@ -6,10 +6,10 @@
 
     <property name="M_PI" value="3.1415926535897931" />
     <property name="VELOCITY_LIMIT_SCALE" value="0.6" />
-  
+
     <property name="shoulder_lift_length" value="0.10" />
     <property name="shoulder_lift_radius" value="0.12" />
-  
+
     <!-- for non-symmetric upper arm -->
     <property name="uar_xyz1" value= "0.21398" />
     <property name="uar_xyz2" value="-0.01621" />
@@ -20,7 +20,7 @@
     <property name="uar_iyy"  value= "0.07473670440" />
     <property name="uar_iyz"  value="-0.00017936450" />
     <property name="uar_izz"  value= "0.07608763307" />
-  
+
     <property name="ual_xyz1" value= "0.21405" />
     <property name="ual_xyz2" value= "0.01658" />
     <property name="ual_xyz3" value="-0.00057" />
@@ -42,7 +42,7 @@
             <limit effort="40" velocity="${30.0*M_PI/180}" lower="${-80*M_PI/180}" upper="${200*M_PI/180}" />
             <dynamics damping="1.0" />
         </joint>
-    
+
         <link name="left_shoulder_extensor_link">
             <inertial>
                 <mass value="2.0310" />
@@ -68,7 +68,7 @@
                 </geometry>
             </collision>
         </link>
-    
+
         <joint name="left_shoulder_abductor" type="${JOINT_TYPE_LEFT_SHOULDER_ABDUCTOR}">
             <axis xyz="-1 0 0"/>
             <limit effort="40" velocity="${30*M_PI/180}" lower="${-24*M_PI/180}" upper="${150*M_PI/180}" />
@@ -77,7 +77,7 @@
             <child link="left_shoulder_abductor_link"/>
             <dynamics damping="1.0"/>
         </joint>
-    
+
         <link name="left_shoulder_abductor_link">
             <inertial>
                 <mass value="0.566" />
@@ -103,7 +103,7 @@
                 </geometry>
             </collision>
         </link>
-    
+
         <joint name="left_shoulder_rotator" type="${JOINT_TYPE_LEFT_SHOULDER_ROTATOR}">
             <axis xyz="0 0 1" />
             <origin xyz="0 -0.03175 -0.27857" rpy="0 0 ${M_PI}" />
@@ -112,7 +112,7 @@
             <limit effort="20" velocity="${50*M_PI/180}" lower="${-85*M_PI/180}" upper="${85*M_PI/180}" />
             <dynamics damping="1.0"/>
         </joint>
-    
+
         <link name="left_shoulder_rotator_link">
             <inertial>
                 <mass value="2.296" />
