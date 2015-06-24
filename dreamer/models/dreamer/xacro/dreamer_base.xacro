@@ -13,72 +13,72 @@
     <property name="MESH_EXTENSION" value="stl" />
 
     <property name="MESH_COLL" value="low_res" />
-    
+
     <xacro:include filename="$(find controlit_models_common)/models/generic_models.xml" />
 
     <!--Torso-->
     <xacro:include filename="$(find dreamer)/models/dreamer/xacro/dreamer_torso.xacro"/>
-    
+
     <!-- Arms -->
     <xacro:include filename="$(find dreamer)/models/dreamer/meka_description/urdf/A2R3_r_arm_defs.urdf.xacro" />
     <xacro:include filename="$(find dreamer)/models/dreamer/meka_description/urdf/A2R3_l_arm_defs.urdf.xacro" />
-    
+
     <!-- Meka Hand -->
     <xacro:include filename="$(find dreamer)/models/dreamer/meka_description/urdf/H2R2_r_hand_defs.urdf.xacro" />
     <xacro:include filename="$(find dreamer)/models/dreamer/meka_description/urdf/H2R2_l_hand_defs.urdf.xacro" />
-    
-    
+
+
     <!-- Meka Head -->
     <xacro:include filename="$(find dreamer)/models/dreamer/meka_description/urdf/S2R1_head_defs.urdf.xacro" />
-    
+
     <!-- Define various colors -->
     <material name="GreyA"> <color rgba="0.3 0.3 0.3 1.0"/> </material>
     <material name="GreyB"> <color rgba="0.5 0.5 0.5 1.0"/> </material>
     <material name="GreyC"> <color rgba="0.7 0.7 0.7 1.0"/> </material>
-    
+
     <!-- Add Dreamer's torso and specify the height of the pan plate above the ground. -->
     <dreamer_torso height="0.8"/>
-    
+
     <!-- Add left and right arms. -->
     <m3_r_arm side="r" reflect="1" parent="torso_upper_pitch_link">
         <origin xyz="0.0 -0.18465 0.2337" rpy="0 0 0" />
     </m3_r_arm>
-    
+
     <m3_l_arm side="l" reflect="0" parent="torso_upper_pitch_link">
         <origin xyz="0.0 0.18465 0.2337" rpy="0 0 0" />
     </m3_l_arm>
-    
+
     <!-- Add the head. -->
     <m3_head side="r" reflect="1" parent="torso_upper_pitch_link">
         <origin xyz="0.0 0.0 0.31155" rpy="0 0 0" />
     </m3_head>
-    
+
     <!-- Add right hand. -->
     <m3_r_hand side="r" reflect="1" parent="right_wrist_yaw_link">
         <origin xyz="0.0 0.0 0.0" rpy="0 0 0" />
     </m3_r_hand>
-    
-    <!--   
+
+    <!--
     <m3_l_hand side="l" reflect="1" parent="left_wrist_yaw_link">
         <origin xyz="0.0 0.0 0.0" rpy="0 0 0" />
-    </m3_l_hand> 
+    </m3_l_hand>
     -->
-    
+
     <!-- Add PR2 gripper onto end of left arm -->
     <xacro:include filename="$(find dreamer)/models/dreamer/xacro/gripper_v0/gripper.urdf.xacro" />
-    
+
     <xacro:pr2_gripper_v0 reflect="1.0" side="l" parent="left_wrist_yaw_link" >
         <origin xyz="0 0 0" rpy="1.57 1.57 0" />
     </xacro:pr2_gripper_v0>
-    
-    
+
+
     <!--
       The following enables torque feedback.  Without these, the following warning will be printed
       by Gazebo when the shared memory plugin is used:
-    
+
       Warning [ODEJoint.cc:1105] GetForceTorque: forgot to set <provide_feedback>?
     -->
-    
+
     <!-- Torso joints -->
     <!-- <gazebo reference="torso_yaw">
       <provideFeedback value="true"/>
@@ -89,7 +89,7 @@
     <gazebo reference="torso_upper_pitch">
       <provideFeedback value="true"/>
     </gazebo> -->
-    
+
     <!-- right arm joints -->
     <!-- <gazebo reference="right_shoulder_extensor">
       <provideFeedback value="true"/>
@@ -112,7 +112,7 @@
     <gazebo reference="right_wrist_yaw">
       <provideFeedback value="true"/>
     </gazebo> -->
-    
+
     <!-- Left arm joints -->
     <!-- <gazebo reference="left_shoulder_extensor">
       <provideFeedback value="true"/>
@@ -135,7 +135,7 @@
     <gazebo reference="left_wrist_yaw">
       <provideFeedback value="true"/>
     </gazebo> -->
-    
+
     <!-- Head and neck joints -->
     <!-- <gazebo reference="lower_neck_pitch">
       <provideFeedback value="true"/>
@@ -158,7 +158,7 @@
     <gazebo reference="left_eye_yaw">
       <provideFeedback value="true"/>
     </gazebo> -->
-    
+
     <!-- Right hand joints -->
     <!-- <gazebo reference="right_thumb_1">
       <provideFeedback value="true"/>
@@ -196,7 +196,7 @@
     <gazebo reference="right_pinky_3">
       <provideFeedback value="true"/>
     </gazebo> -->
-    
+
     <!-- Left gripper joints -->
     <!-- <gazebo reference="l_gripper_l_finger_joint">
       <provideFeedback value="true"/>

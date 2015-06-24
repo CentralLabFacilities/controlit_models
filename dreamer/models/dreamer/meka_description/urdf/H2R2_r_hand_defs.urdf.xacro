@@ -63,7 +63,7 @@
                         material="GreyA"
                         visual_scale="1 1 1"
                         collision_mesh="${modelPath}/meka_description/meshes/${MESH_COLL}/H2R3/H2R3_RJ0_thumb_abductlink.stl" />
-    
+
         <gazebo reference="right_thumb_cmc_link">
             <mu1>1</mu1>
             <mu2>1</mu2>
@@ -134,7 +134,7 @@
                     <mesh filename="${modelPath}/meka_description/meshes/${MESH_QUALITY}/H2R3/H2R3_thumb_knuckle2.stl" />
                 </geometry>
             </visual>
-      
+
             <collision>
                 <origin xyz="0 0 0" rpy="0.0 0.0 0.0 " />
                 <geometry name="thumb_knuckle2_collision">
@@ -142,12 +142,12 @@
                 </geometry>
             </collision>
         </link>
-      
+
         <gazebo reference="right_thumb_ip_link">
             <mu1>1</mu1>
             <mu2>1</mu2>
         </gazebo>
-      
+
         <!-- Start Index Finger -->
         <joint name="right_pointer_finger_mcp" type="${RIGHT_HAND_JOINT_TYPE}">
             <axis xyz="0 1 0" />
