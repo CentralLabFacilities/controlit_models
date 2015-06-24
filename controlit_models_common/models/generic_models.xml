@@ -1,65 +1,85 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://ros.org/wiki/xacro" name="hcrl">
-  <!-- The following was taken from drc_configuration/common_xacro/xacro/generic_models.xacro -->
-  <!-- Its seems that zero mass links are not kosher. I can't find any solid data, only suggestions from people
-  as to what small but not too small should be for mass numbers.
-  Until better evidence/experience says otherwise, we will use a mass that is ~0.1% * total_mass, and
-  the inertia properties of a cylinder. Justification: Most of these virtual links are the rotor attached
-  to gearing and any attachment structure.
-   -->
-  <xacro:property name="virtual_link_mass" value="0.1"/>
-  <xacro:property name="virtual_link_radius" value="0.05"/>
-  <xacro:property name="virtual_link_height" value="0.05"/>
-  <xacro:macro name="virtual_link" params="name origin_xyz origin_rpy">
-    <link name="${name}">
-      <!-- Virtual Link -->
-      <inertial>
-        <mass value="${virtual_link_mass}" />
-        <origin rpy="${origin_rpy}" xyz="${origin_xyz}"/>
-        <inertia ixx="${(virtual_link_mass*(3*virtual_link_radius*virtual_link_radius + virtual_link_height*virtual_link_height))/12}" ixy="0.0" ixz="0.0"
-                 iyy="${(virtual_link_mass*(3*virtual_link_radius*virtual_link_radius + virtual_link_height*virtual_link_height))/12}" iyz="0.0"
-                 izz="${(virtual_link_mass*virtual_link_radius*virtual_link_radius)/2}" />
-      </inertial>
-    </link>
-  </xacro:macro>
 
-  <xacro:macro name="fixed_joint" params="jointName parent child origin_xyz origin_rpy">
-    <joint name="${jointName}" type="fixed">
-      <origin rpy="${origin_rpy}" xyz="${origin_xyz}"/>
-      <axis xyz="0 0 1"/>
-      <parent link="${parent}"/>
-      <child link="${child}"/>
-    </joint>
-  </xacro:macro>
+    <!-- Its seems that zero mass links are not kosher. I can't find any solid data, only suggestions from people
+    as to what small but not too small should be for mass numbers.
+    Until better evidence/experience says otherwise, we will use a mass that is ~0.1% * total_mass, and
+    the inertia properties of a cylinder. Justification: Most of these virtual links are the rotor attached
+    to gearing and any attachment structure.
+     -->
+    <xacro:property name="virtual_link_mass" value="0.1"/>
+    <xacro:property name="virtual_link_radius" value="0.05"/>
+    <xacro:property name="virtual_link_height" value="0.05"/>
+    <xacro:macro name="virtual_link" params="name origin_xyz origin_rpy">
+        <link name="${name}">
+            <!-- Virtual Link -->
+            <inertial>
+                <mass value="${virtual_link_mass}" />
+                <origin rpy="${origin_rpy}" xyz="${origin_xyz}"/>
+                <inertia ixx="${(virtual_link_mass*(3*virtual_link_radius*virtual_link_radius + virtual_link_height*virtual_link_height))/12}" ixy="0.0" ixz="0.0"
+                         iyy="${(virtual_link_mass*(3*virtual_link_radius*virtual_link_radius + virtual_link_height*virtual_link_height))/12}" iyz="0.0"
+                         izz="${(virtual_link_mass*virtual_link_radius*virtual_link_radius)/2}" />
+            </inertial>
+        </link>
+    </xacro:macro>
 
-  <!-- The following was taken from drc_configuration/common_xacro/xacro/generic_models.xacro -->
-  <xacro:macro name="box_link" params="name width height depth mass origin_xyz origin_rpy visual_mesh visual_scale material collision_mesh">
-    <link name="${name}">
-      <inertial>
-        <mass value="${mass}" />
-        <origin rpy="${origin_rpy}" xyz="${origin_xyz}"/>
-        <inertia ixx="${(mass*(height*height + depth*depth))/12}"  ixy="0.0" ixz="0.0"
-                 iyy="${(mass*(width*width + depth*depth))/12}" iyz="0.0"
-                 izz="${(mass*(width*width + height*height))/12}" />
-      </inertial>
-      <visual>
-        <geometry>
-          <mesh filename="${visual_mesh}" scale="${visual_scale}"/>
-          <!-- <box size="${width} ${height} ${depth}"/> -->
-        </geometry>
-        <origin rpy="0 0 0" xyz="0 0 0"/>
-        <!-- <origin rpy="${origin_rpy}" xyz="${origin_xyz}"/> -->
-        <material name="${material}"/>
-      </visual>
-      <collision>
-        <geometry>
-          <mesh filename="${collision_mesh}"/>
-        </geometry>
-        <origin rpy="0 0 0" xyz="0 0 0"/>
-      </collision>
-    </link>
-    <!-- <gazebo reference="${name}">
-      <material>Gazebo/${material}</material>
-    </gazebo> -->
-  </xacro:macro>
+    <xacro:macro name="fixed_joint" params="jointName parent child origin_xyz origin_rpy">
+        <joint name="${jointName}" type="fixed">
+            <origin rpy="${origin_rpy}" xyz="${origin_xyz}"/>
+            <axis xyz="0 0 1"/>
+            <parent link="${parent}"/>
+            <child link="${child}"/>
+        </joint>
+    </xacro:macro>
+
+    <xacro:macro name="box_link" params="name width height depth mass origin_xyz origin_rpy visual_mesh visual_scale material collision_mesh">
+        <link name="${name}">
+            <inertial>
+                <mass value="${mass}" />
+                <origin rpy="${origin_rpy}" xyz="${origin_xyz}"/>
+                <inertia ixx="${(mass*(height*height + depth*depth))/12}"  ixy="0.0" ixz="0.0"
+                         iyy="${(mass*(width*width + depth*depth))/12}" iyz="0.0"
+                         izz="${(mass*(width*width + height*height))/12}" />
+            </inertial>
+            <visual>
+                <geometry>
+                    <mesh filename="${visual_mesh}" scale="${visual_scale}"/>
+                </geometry>
+                <origin rpy="0 0 0" xyz="0 0 0"/>
+                <!-- <origin rpy="${origin_rpy}" xyz="${origin_xyz}"/> -->
+                <material name="${material}"/>
+            </visual>
+            <collision>
+              <geometry>
+                <mesh filename="${collision_mesh}"/>
+              </geometry>
+              <origin rpy="0 0 0" xyz="0 0 0"/>
+            </collision>
+        </link>
+    </xacro:macro>
+
+    <xacro:macro name="meshless_box_link" params="name width height depth mass origin_xyz origin_rpy visual_scale material">
+        <link name="${name}">
+            <inertial>
+                <mass value="${mass}" />
+                <origin rpy="${origin_rpy}" xyz="${origin_xyz}" />
+                <inertia ixx="${(mass*(height*height + depth*depth))/12}"  ixy="0.0" ixz="0.0"
+                         iyy="${(mass*(width*width + depth*depth))/12}" iyz="0.0"
+                         izz="${(mass*(width*width + height*height))/12}" />
+            </inertial>
+            <visual>
+                <geometry>
+                    <box size="${width} ${height} ${depth}" />
+                </geometry>
+                <origin rpy="${origin_rpy}" xyz="${origin_xyz}" />
+                <material name="${material}"/>
+            </visual>
+            <collision>
+                <geometry>
+                    <box size="${width} ${height} ${depth}" />
+                </geometry>
+                <origin rpy="${origin_rpy}" xyz="${origin_xyz}" />
+            </collision>
+        </link>
+    </xacro:macro>
 </robot>
