@@ -5,5 +5,7 @@
         command="$(find xacro)/xacro.py '$(find stickbot_lowerleg_3dof)/models/stickbot_lowerleg_3dof/xacro/stickbot_lowerleg_3dof_linked_to_world.xacro'" />
 
     <!-- Start the joint state publisher, robot state publisher, and RViz -->
-    <include file="$(find controlit_models_common)/launch/rviz.xml"/>
+    <include file="$(find controlit_models_common)/launch/rviz.xml">
+        <arg name="RVizConfigFile" value="$(find stickbot_lowerleg_3dof)/rviz/stickbot_lowerleg_3dof.rviz" />
+    </include>
 </launch>

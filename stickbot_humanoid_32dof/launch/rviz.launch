@@ -4,5 +4,7 @@
     <param name="robot_description"
         command="$(find xacro)/xacro.py '$(find stickbot_humanoid_32dof)/models/stickbot_humanoid_32dof/xacro/stickbot_humanoid_32dof_linked_to_world.xacro'" />
 
-    <include file="$(find controlit_models_common)/launch/rviz.xml"/>
+    <include file="$(find controlit_models_common)/launch/rviz.xml">
+        <arg name="RVizConfigFile" value="$(find stickbot_humanoid_32dof)/rviz/stickbot_humanoid_32dof.rviz" />
+    </include>
 </launch>

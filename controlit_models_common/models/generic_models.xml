@@ -58,7 +58,7 @@
         </link>
     </xacro:macro>
 
-    <xacro:macro name="meshless_box_link" params="name width height depth mass origin_xyz origin_rpy visual_scale material">
+    <xacro:macro name="meshless_box_link" params="name width height depth mass origin_xyz origin_rpy material">
         <link name="${name}">
             <inertial>
                 <mass value="${mass}" />

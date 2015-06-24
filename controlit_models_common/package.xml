@@ -3,20 +3,20 @@
     <name>controlit_models_common</name>
 
     <version>0.0.0</version>
-    
+
     <description>
-        Contains shared files among the other packages within the controlit_models 
+        Contains shared files among the other packages within the controlit_models
         meta-package.
     </description>
-    
+
     <maintainer email="liangfok@utexas.edu">Chien-Liang Fok</maintainer>
 
     <author>Chien-Liang Fok</author>
     <author>Gwendolyn Johnson</author>
     <author>J.D. Yamokoski</author>
-    
+
     <license>LGPLv2.1</license>
-    
+
     <url>http://ros.org/wiki/dreamer</url>
 
     <!-- The *_depend tags are used to specify dependencies -->

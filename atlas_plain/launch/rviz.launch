@@ -4,5 +4,7 @@
     <param name="robot_description"
         command="$(find xacro)/xacro.py '$(find atlas_plain)/models/atlas_plain/xacro/atlas_plain_with_sandia_hands_linked_to_world.xacro'" />
 
-    <include file="$(find controlit_models_common)/launch/rviz.xml"/>
+    <include file="$(find controlit_models_common)/launch/rviz.xml">
+        <arg name="RVizConfigFile" value="$(find atlas_plain)/rviz/atlas_plain.rviz" />
+    </include>
 </launch>
