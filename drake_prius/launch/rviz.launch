@@ -1,0 +1,11 @@
+<?xml version="1.0" ?>
+<launch>
+    <!-- Load the robot description parameter-->
+    <param name="robot_description"
+        textfile="$(find drake_prius)/models/drake_prius/prius.urdf" />
+
+    <!-- Start the joint state publisher, robot state publisher, and RViz -->
+    <include file="$(find controlit_models_common)/launch/rviz.xml">
+        <arg name="RVizConfigFile" value="$(find drake_prius)/rviz/drake_prius.rviz" />
+    </include>
+</launch>
