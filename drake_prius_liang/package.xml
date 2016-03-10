@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<package format="2">
+	<name>drake_prius_liang</name>
+
+    <version>0.0.0</version>
+    
+    <description>
+        Contains files related to the URDF of the prius robot used in Drake
+        that was created by Liang. 
+
+        This is the Prius model derived from the SDF model that's used in Drake
+        (https://github.com/RobotLocomotion/drake/wiki).
+    </description>
+    
+    <maintainer email="liangfok@utexas.edu">Chien-Liang Fok</maintainer>
+
+    <author>The Drake Authors</author>
+    
+    <license>BSD</license>
+    
+    <url>http://ros.org/wiki/drake_prius_liang</url>
+
+    <!-- The *_depend tags are used to specify dependencies -->
+    <!-- Dependencies can be catkin packages or system dependencies -->
+    <!-- Examples: -->
+    <!-- Use build_depend for packages you need at compile time: -->
+    <!--   <build_depend>message_generation</build_depend> -->
+    <!-- Use buildtool_depend for build tool packages: -->
+    <!--   <buildtool_depend>catkin</buildtool_depend> -->
+    <!-- Use exec_depend for packages you need at runtime: -->
+    <!--   <exec_depend>message_runtime</exec_depend> -->
+    <!-- Use test_depend for packages you need only for testing: -->
+    <!--   <test_depend>gtest</test_depend> -->
+    <buildtool_depend>catkin</buildtool_depend>
+</package>
