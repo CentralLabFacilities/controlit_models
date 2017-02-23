@@ -2,7 +2,7 @@
 <robot xmlns:xacro="http://ros.org/wiki/xacro" name="valkyrie_rviz">
 
   <!-- RViz uses package:// for the model path. -->
-  <property name="modelPath" value="package://valkyrie/models/valkyrie" />
+  <xacro:property name="modelPath" value="package://valkyrie/models/valkyrie" />
 
   <xacro:include filename="$(find valkyrie)/models/valkyrie/xacro/valkyrie_base.xacro" />
 

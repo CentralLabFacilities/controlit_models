@@ -1,19 +1,19 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface" name="dreamer_testbed">
 
-    <property name="M_PI" value="3.1415926535897931" />
-    <property name="R_ARM" value="ma10" />
-    <property name="R_HAND" value="mh8" />
-    <property name="TORSO" value="mt3" />
-    <property name="HEAD" value="ms2" />
-    <property name="MESH" value="mid_res" />
-    <property name="MESH_COLL" value="low_res" />
+    <xacro:property name="M_PI" value="3.1415926535897931" />
+    <xacro:property name="R_ARM" value="ma10" />
+    <xacro:property name="R_HAND" value="mh8" />
+    <xacro:property name="TORSO" value="mt3" />
+    <xacro:property name="HEAD" value="ms2" />
+    <xacro:property name="MESH" value="mid_res" />
+    <xacro:property name="MESH_COLL" value="low_res" />
 
     <!-- 80/20 properties-->
-    <property name="KgPerM" value="1.0715" />
-    <property name="SideLength" value="0.0381"/>
-    <property name="SideLengthSquared" value="0.00145161"/>
-    <property name="StandHeight" value="0.8"/>
+    <xacro:property name="KgPerM" value="1.0715" />
+    <xacro:property name="SideLength" value="0.0381"/>
+    <xacro:property name="SideLengthSquared" value="0.00145161"/>
+    <xacro:property name="StandHeight" value="0.8"/>
 
     <xacro:include filename="$(find controlit_models_common)/models/generic_models.xml" />
 
@@ -35,7 +35,7 @@
     <!-- Meka Head -->
     <xacro:include filename="$(find dreamer)/models/dreamer/meka_description/urdf/S2R1_head_defs.urdf.xacro" />
 
-    <property name="M_PI" value="3.1415926535897931" />
+    <xacro:property name="M_PI" value="3.1415926535897931" />
     <material name="GreyA"> <!-- darkest -->
         <color rgba="0.3 0.3 0.3 1.0"/>
     </material>
@@ -64,7 +64,7 @@
         <origin xyz="0.0 0.18465 0.2337" rpy="0 0 0" />
     </m3_l_arm>
   
-    <property name="gripperModelPath" value="package://dreamer/models/dreamer" />
+    <xacro:property name="gripperModelPath" value="package://dreamer/models/dreamer" />
 
     <!-- Add PR2 gripper onto end of left arm -->
     <xacro:include filename="$(find dreamer)/models/dreamer/xacro/gripper_v0/gripper.urdf.xacro" />

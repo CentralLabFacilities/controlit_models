@@ -88,3 +88,8 @@ include_directories(
 # target_link_libraries(dreamer_pr2_gripper_plugin 
 #     ${GAZEBO_LIBRARIES}
 # )
+
+install(DIRECTORY
+    models
+    DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
+)

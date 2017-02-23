@@ -2,7 +2,7 @@
 
 <robot name="atlas_legs_plain">
 
-    <macro name="atlas_legs_plain">
+    <xacro:macro name="atlas_legs_plain">
         <link name="l_foot">
             <inertial>
                 <mass value="2.05" />
@@ -376,5 +376,5 @@
             <limit effort="220" velocity="12" lower="0" upper="2.38569" />
             <safety_controller k_position="100" k_velocity="100" soft_lower_limit="-10" soft_upper_limit="12.3857" />
         </joint>
-    </macro>
+    </xacro:macro>
 </robot>

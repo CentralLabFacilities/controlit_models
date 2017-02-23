@@ -1,42 +1,40 @@
 <?xml version="1.0"?>
-<robot xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor"
-       xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
-       xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface">
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
 
 
-    <property name="M_PI" value="3.1415926535897931" />
-    <property name="VELOCITY_LIMIT_SCALE" value="0.6" />
+    <xacro:property name="M_PI" value="3.1415926535897931" />
+    <xacro:property name="VELOCITY_LIMIT_SCALE" value="0.6" />
 
-    <property name="shoulder_lift_length" value="0.10" />
-    <property name="shoulder_lift_radius" value="0.12" />
+    <xacro:property name="shoulder_lift_length" value="0.10" />
+    <xacro:property name="shoulder_lift_radius" value="0.12" />
 
     <!-- for non-symmetric upper arm -->
-    <property name="uar_xyz1" value= "0.21398" />
-    <property name="uar_xyz2" value="-0.01621" />
-    <property name="uar_xyz3" value="-0.00020" />
-    <property name="uar_ixx"  value= "0.01537748957" />
-    <property name="uar_ixy"  value= "0.00375711247" />
-    <property name="uar_ixz"  value="-0.00070852914" />
-    <property name="uar_iyy"  value= "0.07473670440" />
-    <property name="uar_iyz"  value="-0.00017936450" />
-    <property name="uar_izz"  value= "0.07608763307" />
+    <xacro:property name="uar_xyz1" value= "0.21398" />
+    <xacro:property name="uar_xyz2" value="-0.01621" />
+    <xacro:property name="uar_xyz3" value="-0.00020" />
+    <xacro:property name="uar_ixx"  value= "0.01537748957" />
+    <xacro:property name="uar_ixy"  value= "0.00375711247" />
+    <xacro:property name="uar_ixz"  value="-0.00070852914" />
+    <xacro:property name="uar_iyy"  value= "0.07473670440" />
+    <xacro:property name="uar_iyz"  value="-0.00017936450" />
+    <xacro:property name="uar_izz"  value= "0.07608763307" />
 
-    <property name="ual_xyz1" value= "0.21405" />
-    <property name="ual_xyz2" value= "0.01658" />
-    <property name="ual_xyz3" value="-0.00057" />
-    <property name="ual_ixx"  value= "0.01530603856" />
-    <property name="ual_ixy"  value="-0.00339324862" />
-    <property name="ual_ixz"  value= "0.00060765455" />
-    <property name="ual_iyy"  value= "0.07473694455" />
-    <property name="ual_iyz"  value="-0.00019953729" />
-    <property name="ual_izz"  value= "0.07601594191" />
+    <xacro:property name="ual_xyz1" value= "0.21405" />
+    <xacro:property name="ual_xyz2" value= "0.01658" />
+    <xacro:property name="ual_xyz3" value="-0.00057" />
+    <xacro:property name="ual_ixx"  value= "0.01530603856" />
+    <xacro:property name="ual_ixy"  value="-0.00339324862" />
+    <xacro:property name="ual_ixz"  value= "0.00060765455" />
+    <xacro:property name="ual_iyy"  value= "0.07473694455" />
+    <xacro:property name="ual_iyz"  value="-0.00019953729" />
+    <xacro:property name="ual_izz"  value= "0.07601594191" />
 
-    <macro name="m3_l_shoulder" params="side parent reflect *origin">
+    <xacro:macro name="m3_l_shoulder" params="side parent reflect *origin">
 
         <!-- Shoulder pan -->
         <joint name="left_shoulder_extensor" type="${JOINT_TYPE_LEFT_SHOULDER_EXTENSOR}">
             <axis xyz="0 -1 0" />
-            <insert_block name="origin" /> <!-- transform from parent link to this joint frame -->
+            <xacro:insert_block name="origin" /> <!-- transform from parent link to this joint frame -->
             <parent link="${parent}"/>
             <child link="left_shoulder_extensor_link"/>
             <limit effort="40" velocity="${30.0*M_PI/180}" lower="${-80*M_PI/180}" upper="${200*M_PI/180}" />
@@ -138,10 +136,10 @@
                 </geometry>
             </collision>
         </link>
-    </macro>
+    </xacro:macro>
 
     <!-- ============================   Upper Arm   ============================ -->
-    <macro name="m3_l_upper_arm" params="side parent reflect">
+    <xacro:macro name="m3_l_upper_arm" params="side parent reflect">
         <joint name="left_elbow" type="${JOINT_TYPE_LEFT_ELBOW}">
             <axis xyz="0 1 0" />
             <origin xyz="0.00502 0  0" rpy="0 0 ${M_PI}" />
@@ -213,10 +211,10 @@
                 </geometry>
             </collision>
         </link>
-    </macro>
+    </xacro:macro>
 
     <!-- ============================   Forearm   ============================ -->
-    <macro name="m3_l_forearm" params="side parent reflect">
+    <xacro:macro name="m3_l_forearm" params="side parent reflect">
 
         <joint name="left_wrist_pitch" type="${JOINT_TYPE_LEFT_WRIST_PITCH}">
             <dynamics damping="1.0" />
@@ -283,14 +281,14 @@
                 </geometry>
             </collision>
         </link>
-    </macro>
+    </xacro:macro>
 
-    <macro name="m3_l_arm" params="side parent reflect *origin">
+    <xacro:macro name="m3_l_arm" params="side parent reflect *origin">
         <m3_l_shoulder side="${side}" reflect="${reflect}" parent="${parent}">
-            <insert_block name="origin" />
+            <xacro:insert_block name="origin" />
         </m3_l_shoulder>
         <m3_l_upper_arm side="${side}" reflect="${reflect}" parent="left_shoulder_rotator_link"/>
         <m3_l_forearm side="${side}" reflect="${reflect}" parent="left_wrist_rotator_link" />
-    </macro>
+    </xacro:macro>
 
 </robot>

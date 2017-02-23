@@ -2,11 +2,11 @@
 <robot xmlns:xacro="http://ros.org/wiki/xacro" name="dreamer_testbed">
 
   <!-- Gazebo should model all of the joints in the robot.  -->
-  <property name="HAND_JOINT_TYPE" value="continuous" />
-  <property name="EYE_JOINT_TYPE" value="continuous" />
+  <xacro:property name="HAND_JOINT_TYPE" value="continuous" />
+  <xacro:property name="EYE_JOINT_TYPE" value="continuous" />
 
   <!-- Gazebo uses model:// for the model path. -->
-  <property name="modelPath" value="model://dreamer" />
+  <xacro:property name="modelPath" value="model://dreamer" />
 
   <xacro:include filename="$(find dreamer_testbed)/models/dreamer_testbed/xacro/dreamer_testbed_base.xacro" />
 </robot>

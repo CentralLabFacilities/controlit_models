@@ -1,11 +1,9 @@
 <?xml version="1.0"?>
-<robot xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor"
-       xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
-       xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface">
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
 
-  <property name="M_PI" value="3.1415926535897931" />
+  <xacro:property name="M_PI" value="3.1415926535897931" />
 
-  <macro name="m3_r_palm_transmission">
+  <xacro:macro name="m3_r_palm_transmission">
 
 <!-- Start Thumb -->
   <transmission name="m3joint_ua_${R_HAND}_t0" type="loadable_transmissions/SimpleTransmission">
@@ -93,11 +91,11 @@
     <mechanicalReduction>1</mechanicalReduction>
   </transmission>
 
-</macro>
+</xacro:macro>
 
-  <macro name="m3_r_hand_transmission">
+  <xacro:macro name="m3_r_hand_transmission">
     <m3_r_palm_transmission/>
-  </macro>
+  </xacro:macro>
 
 
 </robot>

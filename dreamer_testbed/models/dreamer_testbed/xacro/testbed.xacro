@@ -1,13 +1,11 @@
 <?xml version="1.0"?>
-<robot xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor"
-       xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
-       xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface">
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
 
     <!-- ensure that modelPath, MESH, TORSO are defined in aprent xacro -->
-    <macro name="testbed" params="PARENT stand_height arm_back arm_up arm_forward arm_drop *origin">
+    <xacro:macro name="testbed" params="PARENT stand_height arm_back arm_up arm_forward arm_drop *origin">
 
       <joint name="testbed_base_offset" type="fixed">
-        <insert_block name="origin" />
+        <xacro:insert_block name="origin" />
         <parent link="${PARENT}"/>
         <child link="testbed_base"/>
       </joint>
@@ -382,6 +380,6 @@
         </sensor>
       </gazebo>
 
-  </macro>
+  </xacro:macro>
 
 </robot>

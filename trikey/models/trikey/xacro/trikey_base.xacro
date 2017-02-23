@@ -1,26 +1,26 @@
 <?xml version='1.0'?>
 <robot xmlns:xacro="http://ros.org/wiki/xacro" name="trikey">
 
-    <property name="M_PI" value="3.1415926535897931" />
-    <property name="M_PI2" value="1.57079632679" />
-    <property name="TRK_MESH" value="meshes/low_res" />
-    <property name="TRK_COLL" value="meshes/low_res" />
-    <property name="OMNI_J" value="base_to_wheel"/>
+    <xacro:property name="M_PI" value="3.1415926535897931" />
+    <xacro:property name="M_PI2" value="1.57079632679" />
+    <xacro:property name="TRK_MESH" value="meshes/low_res" />
+    <xacro:property name="TRK_COLL" value="meshes/low_res" />
+    <xacro:property name="OMNI_J" value="base_to_wheel"/>
 
     <!--Continuous joint locations in base frame-->
-    <property name="ow_x" value="0.24"/>
-    <property name="ow_y" value="0.0"/>
-    <property name="ow_z" value="0.1"/>
-    <property name="cos_2pi_over_3" value="-0.5"/>
-    <property name="sin_2pi_over_3" value="0.86602540378"/>
+    <xacro:property name="ow_x" value="0.24"/>
+    <xacro:property name="ow_y" value="0.0"/>
+    <xacro:property name="ow_z" value="0.1"/>
+    <xacro:property name="cos_2pi_over_3" value="-0.5"/>
+    <xacro:property name="sin_2pi_over_3" value="0.86602540378"/>
 
     <!--Translation of base frame-->
-    <property name="tb_z" value="0.23"/>
+    <xacro:property name="tb_z" value="0.23"/>
 
 
     <!-- <xacro:include filename="$(find trikey)/transmissions/omni_wheels_to_base.transmissions.xacro"/>-->
     <!--TRIKEY_BASE LINKS-->
-    <macro name="trikey_base" params="modelPath">
+    <xacro:macro name="trikey_base" params="modelPath">
         <link name="trikey_base">
             <visual>
               <origin xyz="0.0 0.0 ${tb_z}" rpy="${M_PI2} 0 ${M_PI2}"/>
@@ -58,9 +58,9 @@
     <!--            </geometry> -->
     <!--        </visual>    -->
     <!--    </link>-->
-    </macro>
+    </xacro:macro>
 
-    <macro name="omni_wheel_0" params="modelPath subwheelJointType">
+    <xacro:macro name="omni_wheel_0" params="modelPath subwheelJointType">
 
         <joint name="${OMNI_J}_j0" type="continuous">
             <origin xyz="${ow_x} ${ow_y} ${ow_z}" rpy="0 0 0.0"/>
@@ -87,9 +87,9 @@
         </joint>
 
         <xacro:omni_wheel_18subs wheel_name="omni_wheel_0" wheel_radius="0.101" wheel_mass="0.66625" wheel_visual="${modelPath}/${TRK_MESH}/wheel_set_assembly2_coarse.STL" ixx="0.001603175" iyy="0.001603387" izz="0.002798144" ixy="0.000015199" ixz="0.000004598" iyz="0.000041656" subwheel_mass="0.01" subwheel_joint_type="${subwheelJointType}" color="Red"/>
-    </macro>
+    </xacro:macro>
 
-    <macro name="omni_wheel_1" params="modelPath subwheelJointType">
+    <xacro:macro name="omni_wheel_1" params="modelPath subwheelJointType">
 
         <joint name="${OMNI_J}_j1" type="continuous">
             <origin xyz="${cos_2pi_over_3 * ow_x} ${sin_2pi_over_3 * ow_x} ${ow_z}" rpy="0 0 2.0943951"/>
@@ -116,9 +116,9 @@
         </joint>
 
         <xacro:omni_wheel_18subs wheel_name="omni_wheel_1" wheel_radius="0.101" wheel_mass="0.66625" wheel_visual="${modelPath}/${TRK_MESH}/wheel_set_assembly2_coarse.STL" ixx="0.001603175" iyy="0.001603387" izz="0.002798144" ixy="0.000015199" ixz="0.000004598" iyz="0.000041656" subwheel_mass="0.01" subwheel_joint_type="${subwheelJointType}" color="Green"/>
-    </macro>
+    </xacro:macro>
 
-    <macro name="omni_wheel_2" params="modelPath subwheelJointType">
+    <xacro:macro name="omni_wheel_2" params="modelPath subwheelJointType">
         <joint name="${OMNI_J}_j2" type="continuous">
             <origin xyz="${cos_2pi_over_3 * ow_x} ${-sin_2pi_over_3 * ow_x} ${ow_z}" rpy="0 0 -2.0943951"/>
             <parent link="trikey_base"/>
@@ -144,5 +144,5 @@
         </joint>
 
         <xacro:omni_wheel_18subs wheel_name="omni_wheel_2" wheel_radius="0.101" wheel_mass="0.66625" wheel_visual="${modelPath}/${TRK_MESH}/wheel_set_assembly2_coarse.STL" ixx="0.001603175" iyy="0.001603387" izz="0.002798144" ixy="0.000015199" ixz="0.000004598" iyz="0.000041656" subwheel_mass="0.01" subwheel_joint_type="${subwheelJointType}" color="Blue"/>
-   </macro>
+   </xacro:macro>
 </robot>

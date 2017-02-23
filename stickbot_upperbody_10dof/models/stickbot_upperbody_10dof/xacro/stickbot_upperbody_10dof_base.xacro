@@ -3,7 +3,7 @@
 
   <xacro:include filename="$(find controlit_models_common)/models/generic_models.xml" />
 
-  <macro name="stickbot_upperbody_10dof">
+  <xacro:macro name="stickbot_upperbody_10dof">
     <link name="base_plate">
       <inertial>
         <mass value="10"/>
@@ -383,5 +383,5 @@
         <pin_root_link>1</pin_root_link>
       </plugin>
     </gazebo> -->
-  </macro>
+  </xacro:macro>
 </robot>

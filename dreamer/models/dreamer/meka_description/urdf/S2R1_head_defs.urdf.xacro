@@ -1,16 +1,14 @@
 <?xml version="1.0"?>
-<robot xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor"
-       xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
-       xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface">
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
 
-    <property name="M_PI" value="3.1415926535897931" />
+    <xacro:property name="M_PI" value="3.1415926535897931" />
     <!-- INERTIA MATRIX CHANGE BY POLAM, VALUE=0.0011100-->
 
-    <macro name="m3_neck" params="side parent reflect *origin">
+    <xacro:macro name="m3_neck" params="side parent reflect *origin">
         
         <joint name="lower_neck_pitch" type="${JOINT_TYPE_LOWER_NECK_PITCH}">
             <axis xyz="0 -1 0" />
-            <insert_block name="origin" /> <!-- transform from parent link to this joint frame -->
+            <xacro:insert_block name="origin" /> <!-- transform from parent link to this joint frame -->
             <parent link="${parent}"/>
             <child link="lower_neck_pitch_link"/>
             <limit effort="100" velocity="${20.0*M_PI/180}" lower="${-40*M_PI/180}" upper="${15*M_PI/180}" />
@@ -252,12 +250,12 @@
                 </geometry>
             </collision>
         </link>
-    </macro>
+    </xacro:macro>
 
 
-    <macro name="m3_head" params="side parent reflect *origin">
+    <xacro:macro name="m3_head" params="side parent reflect *origin">
         <m3_neck side="${side}" reflect="${reflect}" parent="${parent}">
-            <insert_block name="origin" />
+            <xacro:insert_block name="origin" />
         </m3_neck>
-    </macro>
+    </xacro:macro>
 </robot>

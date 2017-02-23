@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://ros.org/wiki/xacro" name="dreamer">
 
-    <property name="M_PI" value="3.1415926535897931" />
+    <xacro:property name="M_PI" value="3.1415926535897931" />
     <!-- INERTIA MATRIX CHANGE BY POLAM, VALUE=0.0011100-->
 
     <xacro:macro name="m3_r_palm" params="side parent reflect *origin">
@@ -506,7 +506,7 @@
 
     <xacro:macro name="m3_r_hand" params="side parent reflect *origin">
         <m3_r_palm side="${side}" reflect="${reflect}" parent="${parent}">
-            <insert_block name="origin" />
+            <xacro:insert_block name="origin" />
         </m3_r_palm>
     </xacro:macro>
 </robot>

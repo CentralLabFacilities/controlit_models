@@ -1,17 +1,13 @@
 <?xml version="1.0"?>
-<robot xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor"
-       xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
-       xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface">
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
 
-    <property name="M_PI" value="3.1415926535897931" />
-
-
-    <macro name="m3_r_shoulder" params="side parent reflect *origin">
+    <xacro:property name="M_PI" value="3.1415926535897931" />
+    <xacro:macro name="m3_r_shoulder" params="side parent reflect *origin">
 
     <!-- Shoulder pan -->
     <joint name="right_shoulder_extensor" type="${JOINT_TYPE_RIGHT_SHOULDER_EXTENSOR}">
         <axis xyz="0 -1 0" />
-        <insert_block name="origin" /> <!-- transform from parent link to this joint frame -->
+        <xacro:insert_block name="origin" /> <!-- transform from parent link to this joint frame -->
         <parent link="${parent}"/>
         <child link="right_shoulder_extensor_link"/>
         <limit effort="40" velocity="${30.0*M_PI/180}"
@@ -114,12 +110,12 @@
             </geometry>
         </collision>
     </link>
-</macro>
+</xacro:macro>
 
 
 
 <!-- ============================   Upper Arm   ============================ -->
-<macro name="m3_r_upper_arm" params="side parent reflect">
+<xacro:macro name="m3_r_upper_arm" params="side parent reflect">
     <joint name="right_elbow" type="${JOINT_TYPE_RIGHT_ELBOW}">
         <axis xyz="0 -1 0" />
         <origin xyz="0.00502 0  0" rpy="0 0 0" />
@@ -195,12 +191,12 @@
         </collision>
     </link>
 
-  </macro>
+  </xacro:macro>
 
 
   <!-- ============================   Forearm   ============================ -->
 
-    <macro name="m3_r_forearm" params="side parent reflect">
+    <xacro:macro name="m3_r_forearm" params="side parent reflect">
 
         <joint name="right_wrist_pitch" type="${JOINT_TYPE_RIGHT_WRIST_PITCH}">
             <dynamics damping="1.0" />
@@ -271,17 +267,17 @@
                 </geometry>
             </collision>
         </link>
-   </macro>
+   </xacro:macro>
 
 
 
-  <macro name="m3_r_arm" params="side parent reflect *origin">
+  <xacro:macro name="m3_r_arm" params="side parent reflect *origin">
     <m3_r_shoulder side="${side}" reflect="${reflect}" parent="${parent}">
-      <insert_block name="origin" />
+      <xacro:insert_block name="origin" />
     </m3_r_shoulder>
     <m3_r_upper_arm side="${side}" reflect="${reflect}" parent="right_shoulder_rotator_link" />
     <m3_r_forearm side="${side}" reflect="${reflect}" parent="right_wrist_rotator_link" />
-  </macro>
+  </xacro:macro>
 
 
 </robot>

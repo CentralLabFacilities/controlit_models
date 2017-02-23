@@ -1,18 +1,18 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://ros.org/wiki/xacro" name="dreamer">
 
-    <property name="M_PI" value="3.1415926535897931" />
-    <property name="R_ARM" value="ma10" />
-    <property name="L_ARM" value="l_arm" />
-    <property name="R_HAND" value="mh8" />
-    <property name="L_HAND" value="left_hand" />
-    <property name="TORSO" value="mt3" />
-    <property name="HEAD" value="ms2" />
-    <!-- <property name="MESH" value="mid_res" /> -->
-    <property name="MESH_QUALITY" value="optimized" />
-    <property name="MESH_EXTENSION" value="stl" />
+    <xacro:property name="M_PI" value="3.1415926535897931" />
+    <xacro:property name="R_ARM" value="ma10" />
+    <xacro:property name="L_ARM" value="l_arm" />
+    <xacro:property name="R_HAND" value="mh8" />
+    <xacro:property name="L_HAND" value="left_hand" />
+    <xacro:property name="TORSO" value="mt3" />
+    <xacro:property name="HEAD" value="ms2" />
+    <!-- <xacro:property name="MESH" value="mid_res" /> -->
+    <xacro:property name="MESH_QUALITY" value="optimized" />
+    <xacro:property name="MESH_EXTENSION" value="stl" />
 
-    <property name="MESH_COLL" value="low_res" />
+    <xacro:property name="MESH_COLL" value="low_res" />
 
     <xacro:include filename="$(find controlit_models_common)/models/generic_models.xml" />
 

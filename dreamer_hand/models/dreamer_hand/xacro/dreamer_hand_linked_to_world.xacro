@@ -2,13 +2,13 @@
 <robot xmlns:xacro="http://ros.org/wiki/xacro" name="dreamer_hand">
 
   <!-- Gazebo should model all of the joints in the robot.  -->
-  <!-- <property name="HAND_JOINT_TYPE" value="revolute" /> -->
+  <!-- <xacro:property name="HAND_JOINT_TYPE" value="revolute" /> -->
 
   <!-- For debugging purposes, fix the hand joints -->
-  <!-- <property name="HAND_JOINT_TYPE" value="revolute" /> -->
+  <!-- <xacro:property name="HAND_JOINT_TYPE" value="revolute" /> -->
 
   <!-- Gazebo uses model:// for the model path. -->
-  <property name="modelPath" value="package://dreamer/models/dreamer" />
+  <xacro:property name="modelPath" value="package://dreamer/models/dreamer" />
 
   <xacro:include filename="$(find dreamer_hand)/models/dreamer_hand/xacro/dreamer_hand_base.xacro" />
 

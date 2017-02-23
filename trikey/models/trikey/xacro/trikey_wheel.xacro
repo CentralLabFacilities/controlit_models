@@ -1,7 +1,7 @@
 <?xml version='1.0'?>
 <!-- <xacro:include filename="$(find trikey)/transmissions/omni_wheels_to_base.transmissions.xacro"/>-->
 <!--TRIKEY_WHEEL LINKS-->
-<macro name="trikey_wheels">
+<xacro:macro name="trikey_wheels">
 
 	<link name="omni_wheel_0">
 		<visual name="omni_wheel_0_visual">
@@ -156,4 +156,4 @@
 <!--  </visual>    -->
 <!--</link>-->
 
-</macro>
+</xacro:macro>

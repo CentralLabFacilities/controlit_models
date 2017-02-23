@@ -2,7 +2,7 @@
 <robot xmlns:xacro="http://ros.org/wiki/xacro" name="valkyrie_rviz">
 
     <!-- Gazebo uses model:// for the model path. -->
-    <property name="modelPath" value="model://valkyrie" />
+    <xacro:property name="modelPath" value="model://valkyrie" />
 
     <xacro:include filename="$(find valkyrie)/models/valkyrie/xacro/valkyrie_colors.xacro" />
     <xacro:include filename="$(find valkyrie)/models/valkyrie/xacro/valkyrie_upperbody_base.xacro" />

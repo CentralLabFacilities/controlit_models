@@ -3,7 +3,7 @@
 
   <xacro:include filename="$(find controlit_models_common)/models/generic_models.xml" />
 
-  <macro name="stickbot_humanoid_32dof">
+  <xacro:macro name="stickbot_humanoid_32dof">
     <link name="pelvis">
       <inertial>
         <mass value="2"/>
@@ -1216,5 +1216,5 @@
     <gazebo reference="right_wrist_adductor">
       <provideFeedback value="true"/>
     </gazebo>
-  </macro>
+  </xacro:macro>
 </robot>

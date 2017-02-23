@@ -1,19 +1,19 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://ros.org/wiki/xacro" name="dreamer_hand">
 
-    <property name="M_PI" value="3.1415926535897931" />
-    <property name="R_HAND" value="mh8" />
-    <property name="MESH" value="mid_res" />
-    <property name="MESH_COLL" value="low_res" />
-    <property name="MESH_QUALITY" value="optimized" />
-    <property name="RIGHT_HAND_JOINT_TYPE" value="revolute" />
+    <xacro:property name="M_PI" value="3.1415926535897931" />
+    <xacro:property name="R_HAND" value="mh8" />
+    <xacro:property name="MESH" value="mid_res" />
+    <xacro:property name="MESH_COLL" value="low_res" />
+    <xacro:property name="MESH_QUALITY" value="optimized" />
+    <xacro:property name="RIGHT_HAND_JOINT_TYPE" value="revolute" />
   
     <xacro:include filename="$(find controlit_models_common)/models/generic_models.xml" />
   
     <!-- Meka Hand -->
     <xacro:include filename="$(find dreamer)/models/dreamer/meka_description/urdf/H2R2_r_hand_defs.urdf.xacro" />
   
-    <property name="M_PI" value="3.1415926535897931" />
+    <xacro:property name="M_PI" value="3.1415926535897931" />
   
     <material name="GreyA"> <!-- darkest -->
         <color rgba="0.3 0.3 0.3 1.0"/>

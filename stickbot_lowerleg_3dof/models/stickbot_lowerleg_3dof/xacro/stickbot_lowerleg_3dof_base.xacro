@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
 <robot name="stickbot_lowerleg_3dof" xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller" xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface" xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor" xmlns:xacro="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface">
 
-    <macro name="stickbot_lowerleg_3dof">
+    <xacro:macro name="stickbot_lowerleg_3dof">
         <!-- Add the foot -->
         <link name="foot">
             <inertial>
@@ -131,5 +131,5 @@
         <gazebo reference="knee">
             <provideFeedback value="true"/>
         </gazebo>
-    </macro>
+    </xacro:macro>
 </robot>

@@ -75,3 +75,8 @@ include_directories(
 # target_link_libraries(dreamer_testbed_plugin 
 #     ${GAZEBO_LIBRARIES}
 # )
+
+install(DIRECTORY
+    models
+    DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
+)
